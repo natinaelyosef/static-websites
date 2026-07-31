@@ -1,9 +1,8 @@
-
-name: Deploy JEWELERY STORE to Pages
+name: Deploy JEWELRY STORE to Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-and-deploy:
@@ -15,5 +14,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: project-a
+          folder: "JEWELRY STORE"   # ✅ quoted because of space
           branch: gh-pages
+          clean: false              # ✅ do NOT delete existing files
