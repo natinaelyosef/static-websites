@@ -1,4 +1,4 @@
-name: Deploy Perfume Site
+name: Deploy Perfume to Pages
 
 on:
   push:
