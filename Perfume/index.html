@@ -1,1 +1,1976 @@
 
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXE SCENT | World's Finest Fragrances</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ============ THEME VARIABLES ============ */
+  :root[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1c1c1c;
+    --bg-quaternary: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #707070;
+    --gold: #c9a961;
+    --gold-light: #e8d4a2;
+    --gold-dark: #9a7d3e;
+    --border-color: rgba(255,255,255,0.08);
+    --border-gold: rgba(201,169,97,0.15);
+    --glass-bg: rgba(20,20,20,0.7);
+    --glass-border: rgba(255,255,255,0.1);
+    --shadow-color: rgba(0,0,0,0.5);
+    --hero-gradient: radial-gradient(ellipse at 70% 50%, rgba(201,169,97,0.15) 0%, transparent 60%);
+    --particle-color: rgba(201,169,97,0.3);
+  }
+  :root[data-theme="light"] {
+    --bg-primary: #faf7f2;
+    --bg-secondary: #f0ebe0;
+    --bg-tertiary: #e8e1d3;
+    --bg-quaternary: #ddd4c2;
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --gold: #9a7d3e;
+    --gold-light: #c9a961;
+    --gold-dark: #6b5628;
+    --border-color: rgba(0,0,0,0.08);
+    --border-gold: rgba(154,125,62,0.25);
+    --glass-bg: rgba(255,255,255,0.7);
+    --glass-border: rgba(0,0,0,0.1);
+    --shadow-color: rgba(0,0,0,0.1);
+    --hero-gradient: radial-gradient(ellipse at 70% 50%, rgba(154,125,62,0.15) 0%, transparent 60%);
+    --particle-color: rgba(154,125,62,0.4);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: background 0.6s ease, color 0.6s ease;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ============ FLOATING PARTICLES ============ */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--particle-color);
+    border-radius: 50%;
+    animation: floatParticle 15s infinite linear;
+    box-shadow: 0 0 10px var(--particle-color);
+  }
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+    10% { opacity: 1; transform: translateY(90vh) translateX(20px) scale(1); }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(100px) scale(0.5); opacity: 0; }
+  }
+
+  /* ============ NAVBAR ============ */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 18px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-gold);
+    transition: all 0.4s ease;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--gold);
+  }
+  .logo span { color: var(--text-primary); font-weight: 300; }
+  .nav-links { display: flex; gap: 35px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-primary);
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -6px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions { display: flex; gap: 20px; align-items: center; }
+
+  /* Theme Toggle */
+  .theme-toggle {
+    width: 50px; height: 26px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  .theme-toggle::before {
+    content: '☀';
+    position: absolute;
+    top: 50%; left: 3px;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: var(--bg-primary);
+  }
+  [data-theme="light"] .theme-toggle::before {
+    content: '☾';
+    left: calc(100% - 23px);
+    background: var(--gold);
+  }
+
+  .nav-actions i {
+    font-size: 17px; cursor: pointer;
+    transition: color 0.3s;
+  }
+  .nav-actions i:hover { color: var(--gold); }
+  .nav-btn {
+    padding: 10px 22px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .nav-btn:hover { background: var(--gold); color: var(--bg-primary); }
+  .nav-btn-solid { background: var(--gold); color: var(--bg-primary); border-color: var(--gold); }
+  .nav-btn-solid:hover { background: var(--gold-light); color: var(--bg-primary); border-color: var(--gold-light); }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    padding: 0 60px;
+    background: var(--hero-gradient), linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover; background-position: center;
+    opacity: 0.08;
+    filter: blur(2px);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+    animation: fadeUp 1.2s ease;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    animation: pulse 3s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,97,0.4); }
+    50% { box-shadow: 0 0 0 15px rgba(201,169,97,0); }
+  }
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 1;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  .hero h1 .italic {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+  .hero p {
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    max-width: 500px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .hero-buttons { display: flex; gap: 20px; }
+  .btn-primary {
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--bg-primary);
+    border: none;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+  }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,169,97,0.3); }
+  .btn-outline {
+    padding: 18px 40px;
+    background: transparent;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { background: var(--text-primary); color: var(--bg-primary); }
+
+  /* ============ 3D PERFUME BOTTLE ============ */
+  .hero-3d {
+    position: absolute;
+    right: 80px; top: 50%;
+    transform: translateY(-50%);
+    width: 450px; height: 600px;
+    perspective: 1500px;
+    z-index: 2;
+  }
+  .bottle-3d {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateBottle 20s infinite linear;
+  }
+  @keyframes rotateBottle {
+    0% { transform: rotateY(0deg) rotateX(5deg); }
+    50% { transform: rotateY(180deg) rotateX(-5deg); }
+    100% { transform: rotateY(360deg) rotateX(5deg); }
+  }
+  .bottle-face {
+    position: absolute;
+    width: 300px; height: 450px;
+    top: 50%; left: 50%;
+    margin-left: -150px; margin-top: -225px;
+    background: url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600') center/cover;
+    border-radius: 8px;
+    box-shadow: 0 30px 80px var(--shadow-color), 0 0 0 1px var(--border-gold);
+    backface-visibility: hidden;
+  }
+  .bottle-face.front { transform: translateZ(50px); }
+  .bottle-face.back {
+    transform: rotateY(180deg) translateZ(50px);
+    background: url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600') center/cover;
+  }
+  .bottle-face.left {
+    transform: rotateY(-90deg) translateZ(150px);
+    width: 100px;
+    margin-left: -50px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  }
+  .bottle-face.right {
+    transform: rotateY(90deg) translateZ(150px);
+    width: 100px;
+    margin-left: -50px;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+  }
+  .bottle-glow {
+    position: absolute;
+    width: 400px; height: 400px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity: 0.2;
+    filter: blur(40px);
+    animation: glowPulse 4s infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.1); }
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ BRAND MARQUEE ============ */
+  .brand-marquee {
+    padding: 40px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  .marquee-track {
+    display: flex; gap: 80px;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 4px;
+    transition: color 0.3s;
+  }
+  .marquee-track span:hover { color: var(--gold); }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ============ SECTION HEADERS ============ */
+  .section { padding: 120px 60px; position: relative; z-index: 2; }
+  .section-header { text-align: center; margin-bottom: 80px; }
+  .section-tag {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 12px; letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-header h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .section-header h2 .italic {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+  .section-header p {
+    color: var(--text-secondary);
+    max-width: 600px; margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  /* ============ 3D COLLECTION CARDS ============ */
+  .dt-collection {
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+  .dt-collection::before {
+    content: 'D/T';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 400px;
+    font-weight: 900;
+    color: var(--border-gold);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px; margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .collection-card {
+    perspective: 1000px;
+    height: 480px;
+    cursor: pointer;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .collection-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-gold);
+  }
+  .card-front {
+    background: var(--bg-tertiary);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .card-front img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  .collection-card:hover .card-front img { transform: scale(1.1); }
+  .card-front::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 1;
+  }
+  .card-front-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+  }
+  .card-type {
+    display: inline-block;
+    padding: 5px 12px;
+    background: var(--gold);
+    color: var(--bg-primary);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-radius: 2px;
+  }
+  .card-front-content h3 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .card-front-content p {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+  }
+  .card-back {
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+    transform: rotateY(180deg);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-back-header {
+    border-bottom: 1px solid var(--border-gold);
+    padding-bottom: 20px;
+  }
+  .card-back-header h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--gold);
+  }
+  .card-back-header p {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  .notes-list {
+    list-style: none;
+    margin: 20px 0;
+    flex: 1;
+  }
+  .notes-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+  }
+  .notes-list li i {
+    color: var(--gold);
+    font-size: 12px;
+  }
+  .card-back-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+  }
+  .card-price {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+  }
+  .card-btn {
+    padding: 10px 20px;
+    background: var(--gold);
+    color: var(--bg-primary);
+    border: none;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+  .card-btn:hover { background: var(--gold-light); }
+
+  /* ============ 3D TILT PRODUCT CARDS ============ */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .product-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .product-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    border-color: var(--border-gold);
+    box-shadow: 0 30px 60px var(--shadow-color);
+  }
+  .product-image {
+    height: 320px;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-image img {
+    width: 70%; height: 80%;
+    object-fit: contain;
+    transition: transform 0.5s;
+  }
+  .product-card:hover .product-image img { transform: scale(1.1) rotate(-2deg); }
+  .product-badge {
+    position: absolute; top: 15px; left: 15px;
+    padding: 6px 12px;
+    background: var(--gold);
+    color: var(--bg-primary);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .product-wishlist {
+    position: absolute; top: 15px; right: 15px;
+    width: 40px; height: 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .product-wishlist:hover { background: var(--gold); color: var(--bg-primary); border-color: var(--gold); }
+  .product-info { padding: 25px; }
+  .product-brand {
+    color: var(--gold);
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .product-notes {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .product-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+  }
+  .product-price {
+    font-size: 22px; font-weight: 600;
+    color: var(--text-primary);
+  }
+  .product-price .old {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    font-size: 14px;
+    margin-right: 8px;
+    font-weight: 400;
+  }
+  .add-bag {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .add-bag:hover { background: var(--gold); color: var(--bg-primary); }
+
+  /* ============ 3D ROTATING SHOWCASE ============ */
+  .showcase-3d {
+    background: var(--bg-primary);
+    padding: 120px 60px;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
+  .showcase-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .showcase-text h3 {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .showcase-text h2 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+  }
+  .showcase-text h2 .italic {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .showcase-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+  .feature-list {
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  .feature-list li {
+    display: flex; align-items: center; gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+  }
+  .feature-list li i {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  /* 3D Rotating Cube */
+  .cube-container {
+    width: 400px; height: 400px;
+    perspective: 1200px;
+    margin: 0 auto;
+  }
+  .cube {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCube 25s infinite linear;
+  }
+  @keyframes rotateCube {
+    0% { transform: rotateX(-20deg) rotateY(0deg); }
+    100% { transform: rotateX(-20deg) rotateY(360deg); }
+  }
+  .cube-face {
+    position: absolute;
+    width: 280px; height: 280px;
+    top: 60px; left: 60px;
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+  }
+  .cube-face img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .cube-face.front  { transform: translateZ(140px); }
+  .cube-face.back   { transform: rotateY(180deg) translateZ(140px); }
+  .cube-face.right  { transform: rotateY(90deg) translateZ(140px); }
+  .cube-face.left   { transform: rotateY(-90deg) translateZ(140px); }
+  .cube-face.top    { transform: rotateX(90deg) translateZ(140px); }
+  .cube-face.bottom { transform: rotateX(-90deg) translateZ(140px); }
+
+  /* ============ REVIEWS ============ */
+  .reviews { background: var(--bg-secondary); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px; margin: 0 auto;
+  }
+  .review-card {
+    padding: 40px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .review-card:hover { border-color: var(--border-gold); transform: translateY(-5px); }
+  .review-card::before {
+    content: '"';
+    position: absolute; top: 10px; right: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--border-gold);
+    line-height: 1;
+  }
+  .stars { color: var(--gold); margin-bottom: 20px; font-size: 14px; }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  .reviewer {
+    display: flex; align-items: center; gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+  }
+  .reviewer-avatar {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+    color: var(--bg-primary);
+  }
+  .reviewer-info h4 { font-size: 15px; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .reviewer-info p { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ============ SALE BANNER ============ */
+  .sale-banner {
+    padding: 100px 60px;
+    background: linear-gradient(135deg, rgba(201,169,97,0.1) 0%, var(--bg-primary) 100%),
+                url('https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=1920') center/cover;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .sale-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+  }
+  .sale-content { position: relative; z-index: 2; }
+  .sale-tag {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .sale-content h2 {
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .sale-content h2 .italic {
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+  .sale-content p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 40px;
+  }
+
+  /* ============ NEWSLETTER ============ */
+  .newsletter {
+    padding: 100px 60px;
+    background: var(--bg-secondary);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .newsletter-form {
+    max-width: 600px; margin: 40px auto 0;
+    display: flex; gap: 15px;
+  }
+  .newsletter-form input {
+    flex: 1;
+    padding: 18px 25px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: 2px;
+  }
+  .newsletter-form input:focus { border-color: var(--gold); }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 80px 60px 30px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-gold);
+    position: relative;
+    z-index: 2;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    max-width: 1400px; margin: 0 auto 60px;
+  }
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand p {
+    color: var(--text-secondary);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    max-width: 350px;
+  }
+  .footer-col h4 {
+    font-size: 12px; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1400px; margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    display: flex; justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .social-links { display: flex; gap: 20px; }
+  .social-links a { transition: color 0.3s; }
+  .social-links a:hover { color: var(--gold); }
+
+  /* ============ LANGUAGE SWITCHER ============ */
+  .lang-switcher { position: relative; display: flex; align-items: center; }
+  .lang-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--text-primary);
+    padding: 8px 14px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-btn i { color: var(--gold); font-size: 14px; }
+  .lang-btn .fa-chevron-down { font-size: 9px; }
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    min-width: 170px;
+    box-shadow: 0 20px 50px var(--shadow-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    z-index: 1001;
+    overflow: hidden;
+  }
+  .lang-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+  .lang-dropdown button {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .lang-dropdown button:last-child { border-bottom: none; }
+  .lang-dropdown button i { color: var(--gold); font-size: 13px; width: 16px; }
+  .lang-dropdown button:hover { background: var(--gold); color: var(--bg-primary); }
+  .lang-dropdown button:hover i { color: var(--bg-primary); }
+  .lang-dropdown button.active { color: var(--gold); }
+  .lang-dropdown button.active i { color: var(--gold); }
+  .lang-dropdown button.active:hover { color: var(--bg-primary); }
+  .lang-dropdown button.active:hover i { color: var(--bg-primary); }
+
+  /* ============ LIGHTBOX (FULLSCREEN IMAGE VIEWER) ============ */
+  .lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .lightbox.active { opacity: 1; visibility: visible; }
+  .lightbox-img {
+    max-width: 85vw;
+    max-height: 78vh;
+    border-radius: 8px;
+    border: 1px solid var(--border-gold);
+    box-shadow: 0 30px 80px var(--shadow-color);
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 36px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 2;
+    line-height: 1;
+  }
+  .lightbox-close:hover { color: var(--gold); }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px; height: 52px;
+    border: 1px solid var(--border-gold);
+    background: var(--glass-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 17px;
+    z-index: 2;
+  }
+  .lightbox-nav:hover { background: var(--gold); color: var(--bg-primary); border-color: var(--gold); }
+  .lightbox-prev { left: 30px; }
+  .lightbox-next { right: 30px; }
+  .lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-secondary);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: center;
+    max-width: 80vw;
+  }
+  .lightbox-count {
+    position: absolute;
+    top: 25px; left: 35px;
+    color: var(--text-muted);
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+  }
+  .card-front img, .product-image img { cursor: zoom-in; }
+  @media (max-width: 640px) {
+    .lightbox-nav { width: 42px; height: 42px; }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-close { top: 15px; right: 20px; }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .navbar { padding: 15px 30px; }
+    .nav-links { display: none; }
+    .hero, .section { padding: 100px 30px; }
+    .hero-3d { display: none; }
+    .collection-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .showcase-container { grid-template-columns: 1fr; }
+    .cube-container { width: 300px; height: 300px; }
+    .cube-face { width: 200px; height: 200px; top: 50px; left: 50px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .collection-grid, .products-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+    .newsletter-form { flex-direction: column; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">LUXE <span>SCENT</span></div>
+  <ul class="nav-links">
+    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+    <li><a href="#collection" data-i18n="nav.collection">D/T Collection</a></li>
+    <li><a href="#bestsellers" data-i18n="nav.bestsellers">Best Sellers</a></li>
+    <li><a href="#showcase" data-i18n="nav.showcase">Showcase</a></li>
+    <li><a href="#sale" data-i18n="nav.sale">Sale</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-switcher">
+      <button class="lang-btn" id="langBtn" title="Language"><i class="fas fa-globe"></i> <span id="langLabel">EN</span> <i class="fas fa-chevron-down"></i></button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button data-lang="en"><i class="fas fa-check"></i>English</button>
+        <button data-lang="am"><i class="fas fa-check"></i>አማርኛ</button>
+      </div>
+    </div>
+    <div class="theme-toggle" id="themeToggle" title="Toggle Theme"></div>
+    <i class="fas fa-search"></i>
+    <i class="far fa-heart"></i>
+    <i class="fas fa-shopping-bag"></i>
+    <a href="signin.html" class="nav-btn" data-i18n="nav.signin">Sign In</a>
+    <a href="register.html" class="nav-btn nav-btn-solid" data-i18n="nav.register">Register</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-tag" data-i18n="hero.tag">New Collection 2026</span>
+    <h1 data-i18n-html="hero.title">Discover Your <br><span class="italic">Signature</span> Scent</h1>
+    <p data-i18n="hero.subtitle">"A fragrance is the most intense form of memory. It can transport you across time and space in a single breath."</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" data-i18n="hero.shop">Shop Collection</button>
+      <button class="btn-outline" data-i18n="hero.story">Our Story</button>
+    </div>
+  </div>
+
+  <!-- 3D Rotating Bottle -->
+  <div class="hero-3d">
+    <div class="bottle-glow"></div>
+    <div class="bottle-3d">
+      <div class="bottle-face front"></div>
+      <div class="bottle-face back"></div>
+      <div class="bottle-face left"></div>
+      <div class="bottle-face right"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND MARQUEE -->
+<div class="brand-marquee">
+  <div class="marquee-track">
+    <span>CHANEL</span><span>✦</span>
+    <span>DIOR</span><span>✦</span>
+    <span>TOM FORD</span><span>✦</span>
+    <span>CREED</span><span>✦</span>
+    <span>BYREDO</span><span>✦</span>
+    <span>LE LABO</span><span>✦</span>
+    <span>GUCCI</span><span>✦</span>
+    <span>YSL</span><span>✦</span>
+    <span>VERSACE</span><span>✦</span>
+    <span>PRADA</span><span>✦</span>
+    <span>HERMÈS</span><span>✦</span>
+    <span>AMOUAGE</span><span>✦</span>
+    <span>CHANEL</span><span>✦</span>
+    <span>DIOR</span><span>✦</span>
+    <span>TOM FORD</span><span>✦</span>
+    <span>CREED</span><span>✦</span>
+    <span>BYREDO</span><span>✦</span>
+    <span>LE LABO</span><span>✦</span>
+    <span>GUCCI</span><span>✦</span>
+    <span>YSL</span><span>✦</span>
+  </div>
+</div>
+
+<!-- ============ D/T COLLECTION ============ -->
+<section class="section dt-collection" id="collection">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="col.tag">Our Signature Line</span>
+    <h2 data-i18n-html="col.title">The <span class="italic">D/T</span> Collection</h2>
+    <p data-i18n="col.desc">Day & Twilight — A bespoke collection capturing the essence of dawn and dusk in six unforgettable fragrances</p>
+  </div>
+  <div class="collection-grid">
+
+    <!-- Card 1: Floral -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=600" alt="Floral">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.floral">Floral</span>
+            <h3>Rose Éternelle</h3>
+            <p data-i18n="card.desc1">A bouquet of Bulgarian rose at dawn</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Rose Éternelle</h3>
+            <p data-i18n="spec1">Floral Eau de Parfum · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c1t">Top: Bergamot, Pink Pepper</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c1h">Heart: Bulgarian Rose, Peony</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c1b">Base: White Musk, Sandalwood</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c1l">Longevity: 8-10 hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$185</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Oriental -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=600" alt="Oriental">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.oriental">Oriental</span>
+            <h3>Midnight Oud</h3>
+            <p data-i18n="card.desc2">Mysterious Arabian nights in a bottle</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Midnight Oud</h3>
+            <p data-i18n="spec2">Oriental Eau de Parfum · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c2t">Top: Saffron, Cinnamon</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c2h">Heart: Oud, Rose Absolute</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c2b">Base: Amber, Vanilla, Musk</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c2l">Longevity: 12+ hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$245</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Woody -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=600" alt="Woody">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.woody">Woody</span>
+            <h3>Cèdre Noir</h3>
+            <p data-i18n="card.desc3">Deep forest whispers at twilight</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Cèdre Noir</h3>
+            <p data-i18n="spec3">Woody Eau de Parfum · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c3t">Top: Black Pepper, Cardamom</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c3h">Heart: Cedarwood, Vetiver</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c3b">Base: Leather, Tobacco</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c3l">Longevity: 10-12 hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$210</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Fresh -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600" alt="Fresh">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.fresh">Fresh</span>
+            <h3>Ocean Breeze</h3>
+            <p data-i18n="card.desc4">Morning waves on a Mediterranean shore</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Ocean Breeze</h3>
+            <p data-i18n="spec4">Fresh Eau de Toilette · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c4t">Top: Sea Salt, Lemon</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c4h">Heart: Marine Accord, Mint</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c4b">Base: Driftwood, Ambergris</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c4l">Longevity: 6-8 hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$155</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Citrus -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600" alt="Citrus">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.citrus">Citrus</span>
+            <h3>Soleil d'Agrume</h3>
+            <p data-i18n="card.desc5">Sun-drenched Sicilian citrus groves</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Soleil d'Agrume</h3>
+            <p data-i18n="spec5">Citrus Eau de Cologne · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c5t">Top: Bergamot, Blood Orange</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c5h">Heart: Neroli, Petitgrain</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c5b">Base: White Cedar, Musk</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c5l">Longevity: 5-7 hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$135</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6: Gourmand -->
+    <div class="collection-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=600" alt="Gourmand">
+          <div class="card-front-content">
+            <span class="card-type" data-i18n="type.gourmand">Gourmand</span>
+            <h3>Vanille Noire</h3>
+            <p data-i18n="card.desc6">A decadent dessert of Madagascar vanilla</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="card-back-header">
+            <h3>Vanille Noire</h3>
+            <p data-i18n="spec6">Gourmand Eau de Parfum · 100ml</p>
+          </div>
+          <ul class="notes-list">
+            <li><i class="fas fa-star"></i> <span data-i18n="note.c6t">Top: Rum, Caramel</span></li>
+            <li><i class="fas fa-heart"></i> <span data-i18n="note.c6h">Heart: Vanilla Orchid, Tonka</span></li>
+            <li><i class="fas fa-leaf"></i> <span data-i18n="note.c6b">Base: Benzoin, Sandalwood</span></li>
+            <li><i class="fas fa-clock"></i> <span data-i18n="note.c6l">Longevity: 10+ hours</span></li>
+          </ul>
+          <div class="card-back-footer">
+            <span class="card-price">$195</span>
+            <button class="card-btn" data-i18n="add.bag">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ BEST SELLERS ============ -->
+<section class="section" id="bestsellers" style="background: var(--bg-primary);">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="best.tag">Most Loved</span>
+    <h2 data-i18n-html="best.title">Best <span class="italic">Sellers</span></h2>
+    <p data-i18n="best.desc">The world's most coveted fragrances, chosen by connoisseurs</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-image">
+        <span class="product-badge" data-i18n="badge.bestseller">Bestseller</span>
+        <div class="product-wishlist"><i class="far fa-heart"></i></div>
+        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400" alt="Baccarat">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Maison Francis Kurkdjian</div>
+        <h3 class="product-name">Baccarat Rouge 540</h3>
+        <p class="product-notes" data-i18n="prod.notes1">Saffron · Jasmine · Amberwood</p>
+        <div class="product-footer">
+          <div class="product-price"><span class="old">$395</span>$325</div>
+          <button class="add-bag" data-i18n="add.short">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <span class="product-badge" data-i18n="badge.new">New</span>
+        <div class="product-wishlist"><i class="far fa-heart"></i></div>
+        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=400" alt="Creed">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Creed</div>
+        <h3 class="product-name">Aventus</h3>
+        <p class="product-notes" data-i18n="prod.notes2">Pineapple · Birch · Musk</p>
+        <div class="product-footer">
+          <div class="product-price">$435</div>
+          <button class="add-bag" data-i18n="add.short">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <div class="product-wishlist"><i class="far fa-heart"></i></div>
+        <img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=400" alt="Tom Ford">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Tom Ford</div>
+        <h3 class="product-name">Black Orchid</h3>
+        <p class="product-notes" data-i18n="prod.notes3">Truffle · Orchid · Patchouli</p>
+        <div class="product-footer">
+          <div class="product-price">$185</div>
+          <button class="add-bag" data-i18n="add.short">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <span class="product-badge">-18%</span>
+        <div class="product-wishlist"><i class="far fa-heart"></i></div>
+        <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400" alt="Chanel">
+      </div>
+      <div class="product-info">
+        <div class="product-brand">Chanel</div>
+        <h3 class="product-name">N°5 L'Eau</h3>
+        <p class="product-notes" data-i18n="prod.notes4">Aldehydes · Rose · Jasmine</p>
+        <div class="product-footer">
+          <div class="product-price"><span class="old">$168</span>$138</div>
+          <button class="add-bag" data-i18n="add.short">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3D SHOWCASE ============ -->
+<section class="showcase-3d" id="showcase">
+  <div class="showcase-container">
+    <div class="showcase-text">
+      <h3 data-i18n="show.tag">Immersive Experience</h3>
+      <h2 data-i18n-html="show.title">Explore in <span class="italic">3D</span></h2>
+      <p data-i18n="show.desc">Discover our fragrances through an interactive 3D showcase. Rotate, zoom, and experience each bottle as if it were in your hands.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="show.f1">360° bottle visualization</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="show.f2">Interactive note discovery</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="show.f3">Virtual try-on technology</span></li>
+        <li><i class="fas fa-check-circle"></i> <span data-i18n="show.f4">AI-powered scent matching</span></li>
+      </ul>
+      <button class="btn-primary" data-i18n="show.btn">Launch 3D Experience</button>
+    </div>
+    <div class="cube-container">
+      <div class="cube">
+        <div class="cube-face front"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400" alt=""></div>
+        <div class="cube-face back"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=400" alt=""></div>
+        <div class="cube-face right"><img src="https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=400" alt=""></div>
+        <div class="cube-face left"><img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&q=80&w=400" alt=""></div>
+        <div class="cube-face top"><img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=400" alt=""></div>
+        <div class="cube-face bottom"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="rev.tag">What They Say</span>
+    <h2 data-i18n-html="rev.title">Client <span class="italic">Testimonials</span></h2>
+    <p data-i18n="rev.desc">Trusted by over 100,000 fragrance connoisseurs worldwide</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text" data-i18n="rev.t1">"LUXE SCENT has completely transformed my fragrance collection. The Baccarat Rouge 540 I purchased is absolutely divine — authentic, long-lasting, and the packaging was impeccable."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">IL</div>
+        <div class="reviewer-info">
+          <h4>Isabella Laurent</h4>
+          <p data-i18n="rev.role1">Verified Buyer · Paris</p>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text" data-i18n="rev.t2">"As a fragrance enthusiast, I am incredibly particular about authenticity. LUXE SCENT exceeded every expectation. Creed Aventus arrived perfectly sealed with batch codes verified."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AC</div>
+        <div class="reviewer-info">
+          <h4>Alexander Chen</h4>
+          <p data-i18n="rev.role2">Verified Buyer · New York</p>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text" data-i18n="rev.t3">"The gift set I ordered for my wife was beautifully wrapped with a handwritten note. The Tom Ford Black Orchid is her new signature scent. Exceptional service from start to finish."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">JW</div>
+        <div class="reviewer-info">
+          <h4>James Worthington</h4>
+          <p data-i18n="rev.role3">Verified Buyer · London</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SALE BANNER -->
+<section class="sale-banner" id="sale">
+  <div class="sale-content">
+    <span class="sale-tag" data-i18n="sale.tag">Limited Time Offer</span>
+    <h2 data-i18n-html="sale.title">Summer <span class="italic">Sale</span></h2>
+    <p data-i18n="sale.desc">Up to 40% off select luxury fragrances · Ends August 15, 2026</p>
+    <button class="btn-primary" data-i18n="sale.btn">Shop the Sale</button>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="section-header">
+    <span class="section-tag" data-i18n="news.tag">Join the Inner Circle</span>
+    <h2 data-i18n-html="news.title">Subscribe for <span class="italic">Exclusive Access</span></h2>
+    <p data-i18n="news.desc">New launches, private sales, and complimentary fragrance samples</p>
+  </div>
+  <form class="newsletter-form" onsubmit="event.preventDefault(); alert(translations[currentLang]['news.alert']);">
+    <input type="email" placeholder="Enter your email address" data-i18n-placeholder="news.placeholder" required>
+    <button type="submit" class="btn-primary" data-i18n="news.btn">Subscribe</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">LUXE <span>SCENT</span></div>
+      <p data-i18n="foot.desc">Curating the world's finest fragrances since 2010. Every scent tells a story of elegance, artistry, and timeless luxury.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.shop">Shop</h4>
+      <ul>
+        <li><a href="#" data-i18n="foot.new">New Arrivals</a></li>
+        <li><a href="#" data-i18n="foot.best">Best Sellers</a></li>
+        <li><a href="#" data-i18n="foot.collection">D/T Collection</a></li>
+        <li><a href="#" data-i18n="foot.men">Men's Fragrances</a></li>
+        <li><a href="#" data-i18n="foot.women">Women's Fragrances</a></li>
+        <li><a href="#" data-i18n="foot.gifts">Gift Sets</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.company">Company</h4>
+      <ul>
+        <li><a href="#" data-i18n="foot.about">About Us</a></li>
+        <li><a href="#" data-i18n="foot.story">Our Story</a></li>
+        <li><a href="#" data-i18n="foot.careers">Careers</a></li>
+        <li><a href="#" data-i18n="foot.press">Press</a></li>
+        <li><a href="#" data-i18n="foot.sustain">Sustainability</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="foot.support">Support</h4>
+      <ul>
+        <li><a href="#" data-i18n="foot.contact">Contact Us</a></li>
+        <li><a href="#" data-i18n="foot.faq">FAQ</a></li>
+        <li><a href="#" data-i18n="foot.shipping">Shipping Info</a></li>
+        <li><a href="#" data-i18n="foot.returns">Returns</a></li>
+        <li><a href="#" data-i18n="foot.privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="foot.copy">© 2026 LUXE SCENT. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- FULLSCREEN IMAGE VIEWER -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <span class="lightbox-count" id="lightboxCount"></span>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Full view">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+  // ============ LANGUAGE SWITCHER (EN / አማርኛ) ============
+  const translations = {
+    en: {
+      'meta.title': "LUXE SCENT | World's Finest Fragrances",
+      'nav.home': 'Home',
+      'nav.collection': 'D/T Collection',
+      'nav.bestsellers': 'Best Sellers',
+      'nav.showcase': 'Showcase',
+      'nav.sale': 'Sale',
+      'nav.signin': 'Sign In',
+      'nav.register': 'Register',
+      'hero.tag': 'New Collection 2026',
+      'hero.title': 'Discover Your <br><span class="italic">Signature</span> Scent',
+      'hero.subtitle': '"A fragrance is the most intense form of memory. It can transport you across time and space in a single breath."',
+      'hero.shop': 'Shop Collection',
+      'hero.story': 'Our Story',
+      'col.tag': 'Our Signature Line',
+      'col.title': 'The <span class="italic">D/T</span> Collection',
+      'col.desc': 'Day & Twilight — A bespoke collection capturing the essence of dawn and dusk in six unforgettable fragrances',
+      'type.floral': 'Floral',
+      'type.oriental': 'Oriental',
+      'type.woody': 'Woody',
+      'type.fresh': 'Fresh',
+      'type.citrus': 'Citrus',
+      'type.gourmand': 'Gourmand',
+      'card.desc1': 'A bouquet of Bulgarian rose at dawn',
+      'card.desc2': 'Mysterious Arabian nights in a bottle',
+      'card.desc3': 'Deep forest whispers at twilight',
+      'card.desc4': 'Morning waves on a Mediterranean shore',
+      'card.desc5': 'Sun-drenched Sicilian citrus groves',
+      'card.desc6': 'A decadent dessert of Madagascar vanilla',
+      'spec1': 'Floral Eau de Parfum · 100ml',
+      'spec2': 'Oriental Eau de Parfum · 100ml',
+      'spec3': 'Woody Eau de Parfum · 100ml',
+      'spec4': 'Fresh Eau de Toilette · 100ml',
+      'spec5': 'Citrus Eau de Cologne · 100ml',
+      'spec6': 'Gourmand Eau de Parfum · 100ml',
+      'note.c1t': 'Top: Bergamot, Pink Pepper',
+      'note.c1h': 'Heart: Bulgarian Rose, Peony',
+      'note.c1b': 'Base: White Musk, Sandalwood',
+      'note.c1l': 'Longevity: 8-10 hours',
+      'note.c2t': 'Top: Saffron, Cinnamon',
+      'note.c2h': 'Heart: Oud, Rose Absolute',
+      'note.c2b': 'Base: Amber, Vanilla, Musk',
+      'note.c2l': 'Longevity: 12+ hours',
+      'note.c3t': 'Top: Black Pepper, Cardamom',
+      'note.c3h': 'Heart: Cedarwood, Vetiver',
+      'note.c3b': 'Base: Leather, Tobacco',
+      'note.c3l': 'Longevity: 10-12 hours',
+      'note.c4t': 'Top: Sea Salt, Lemon',
+      'note.c4h': 'Heart: Marine Accord, Mint',
+      'note.c4b': 'Base: Driftwood, Ambergris',
+      'note.c4l': 'Longevity: 6-8 hours',
+      'note.c5t': 'Top: Bergamot, Blood Orange',
+      'note.c5h': 'Heart: Neroli, Petitgrain',
+      'note.c5b': 'Base: White Cedar, Musk',
+      'note.c5l': 'Longevity: 5-7 hours',
+      'note.c6t': 'Top: Rum, Caramel',
+      'note.c6h': 'Heart: Vanilla Orchid, Tonka',
+      'note.c6b': 'Base: Benzoin, Sandalwood',
+      'note.c6l': 'Longevity: 10+ hours',
+      'add.bag': 'Add to Bag',
+      'best.tag': 'Most Loved',
+      'best.title': 'Best <span class="italic">Sellers</span>',
+      'best.desc': "The world's most coveted fragrances, chosen by connoisseurs",
+      'badge.bestseller': 'Bestseller',
+      'badge.new': 'New',
+      'prod.notes1': 'Saffron · Jasmine · Amberwood',
+      'prod.notes2': 'Pineapple · Birch · Musk',
+      'prod.notes3': 'Truffle · Orchid · Patchouli',
+      'prod.notes4': 'Aldehydes · Rose · Jasmine',
+      'add.short': 'Add',
+      'show.tag': 'Immersive Experience',
+      'show.title': 'Explore in <span class="italic">3D</span>',
+      'show.desc': 'Discover our fragrances through an interactive 3D showcase. Rotate, zoom, and experience each bottle as if it were in your hands.',
+      'show.f1': '360° bottle visualization',
+      'show.f2': 'Interactive note discovery',
+      'show.f3': 'Virtual try-on technology',
+      'show.f4': 'AI-powered scent matching',
+      'show.btn': 'Launch 3D Experience',
+      'rev.tag': 'What They Say',
+      'rev.title': 'Client <span class="italic">Testimonials</span>',
+      'rev.desc': 'Trusted by over 100,000 fragrance connoisseurs worldwide',
+      'rev.t1': '"LUXE SCENT has completely transformed my fragrance collection. The Baccarat Rouge 540 I purchased is absolutely divine — authentic, long-lasting, and the packaging was impeccable."',
+      'rev.t2': '"As a fragrance enthusiast, I am incredibly particular about authenticity. LUXE SCENT exceeded every expectation. Creed Aventus arrived perfectly sealed with batch codes verified."',
+      'rev.t3': '"The gift set I ordered for my wife was beautifully wrapped with a handwritten note. The Tom Ford Black Orchid is her new signature scent. Exceptional service from start to finish."',
+      'rev.role1': 'Verified Buyer · Paris',
+      'rev.role2': 'Verified Buyer · New York',
+      'rev.role3': 'Verified Buyer · London',
+      'sale.tag': 'Limited Time Offer',
+      'sale.title': 'Summer <span class="italic">Sale</span>',
+      'sale.desc': 'Up to 40% off select luxury fragrances · Ends August 15, 2026',
+      'sale.btn': 'Shop the Sale',
+      'news.tag': 'Join the Inner Circle',
+      'news.title': 'Subscribe for <span class="italic">Exclusive Access</span>',
+      'news.desc': 'New launches, private sales, and complimentary fragrance samples',
+      'news.placeholder': 'Enter your email address',
+      'news.btn': 'Subscribe',
+      'news.alert': 'Welcome to the LUXE SCENT family!',
+      'foot.desc': "Curating the world's finest fragrances since 2010. Every scent tells a story of elegance, artistry, and timeless luxury.",
+      'foot.shop': 'Shop',
+      'foot.company': 'Company',
+      'foot.support': 'Support',
+      'foot.new': 'New Arrivals',
+      'foot.best': 'Best Sellers',
+      'foot.collection': 'D/T Collection',
+      'foot.men': "Men's Fragrances",
+      'foot.women': "Women's Fragrances",
+      'foot.gifts': 'Gift Sets',
+      'foot.about': 'About Us',
+      'foot.story': 'Our Story',
+      'foot.careers': 'Careers',
+      'foot.press': 'Press',
+      'foot.sustain': 'Sustainability',
+      'foot.contact': 'Contact Us',
+      'foot.faq': 'FAQ',
+      'foot.shipping': 'Shipping Info',
+      'foot.returns': 'Returns',
+      'foot.privacy': 'Privacy Policy',
+      'foot.copy': '© 2026 LUXE SCENT. All rights reserved.'
+    },
+    am: {
+      'meta.title': 'LUXE SCENT | የዓለም ምርጥ ሽቶዎች',
+      'nav.home': 'መነሻ',
+      'nav.collection': 'የD/T ስብስብ',
+      'nav.bestsellers': 'ምርጥ ሽያጮች',
+      'nav.showcase': 'ማሳያ',
+      'nav.sale': 'ሽያጭ',
+      'nav.signin': 'ግባ',
+      'nav.register': 'ይመዝገቡ',
+      'hero.tag': 'አዲስ ስብስብ 2026',
+      'hero.title': 'የእርስዎን <br><span class="italic">ልዩ</span> ሽቶ ያግኙ',
+      'hero.subtitle': '"ሽቶ በጣም ጠንካራ የማስታወስ ዓይነት ነው። በአንድ እስትንፋስ በጊዜ እና በቦታ ሊያጓጉዝዎት ይችላል።"',
+      'hero.shop': 'ግዢ ይጀምሩ',
+      'hero.story': 'ታሪካችን',
+      'col.tag': 'የእኛ ልዩ መስመር',
+      'col.title': 'የ<span class="italic">D/T</span> ስብስብ',
+      'col.desc': 'ቀን እና መሸ — የጠዋትን እና የመሸን ማንነት የሚይዝ በስድስት የማይረሱ ሽቶዎች የተሰራ ልዩ ስብስብ',
+      'type.floral': 'አበባዊ',
+      'type.oriental': 'ምስራቃዊ',
+      'type.woody': 'እንጨታማ',
+      'type.fresh': 'ንጹህ',
+      'type.citrus': 'ሲትረስ',
+      'type.gourmand': 'ጎርማንድ',
+      'card.desc1': 'ጥዋት ላይ የቡልጋሪያ ጽጌረዳ እቅፍ',
+      'card.desc2': 'በጠርሙስ ውስጥ ሚስጥራዊ የአረብ ምሽቶች',
+      'card.desc3': 'በመሸ ጊዜ ጥልቅ የደን ሹክሹክታ',
+      'card.desc4': 'በሜዲትራኒያን ዳርቻ ላይ የጥዋት ማዕበል',
+      'card.desc5': 'በፀሐይ የተሞቁ የሲሲሊ ሲትረስ ተክሎች',
+      'card.desc6': 'የማዳጋስካር ቫኒላ የቅንጦት ጣፋጭ',
+      'spec1': 'የአበባ ዩ ዴ ፓርፉም · 100ሚሊ',
+      'spec2': 'የምስራቅ ዩ ዴ ፓርፉም · 100ሚሊ',
+      'spec3': 'የእንጨት ዩ ዴ ፓርፉም · 100ሚሊ',
+      'spec4': 'የንጹህ ዩ ዴ ቶዋሌት · 100ሚሊ',
+      'spec5': 'የሲትረስ ዩ ዴ ኮሎኝ · 100ሚሊ',
+      'spec6': 'የጎርማንድ ዩ ዴ ፓርፉም · 100ሚሊ',
+      'note.c1t': 'የላይኛ: በርጋሞት፣ ሮዝ በርበሬ',
+      'note.c1h': 'መካከለኛ: የቡልጋሪያ ጽጌረዳ፣ ፒዮኒ',
+      'note.c1b': 'የታችኛ: ነጭ ሙስክ፣ ሳንዳል እንጨት',
+      'note.c1l': 'ጸንቶ መቆየት: 8-10 ሰዓታት',
+      'note.c2t': 'የላይኛ: ሳፍሮን፣ ቀረፋ',
+      'note.c2h': 'መካከለኛ: ኡድ፣ የጽጌረዳ ጭማቂ',
+      'note.c2b': 'የታችኛ: አምበር፣ ቫኒላ፣ ሙስክ',
+      'note.c2l': 'ጸንቶ መቆየት: 12+ ሰዓታት',
+      'note.c3t': 'የላይኛ: ጥቁር በርበሬ፣ ካርዳሞም',
+      'note.c3h': 'መካከለኛ: ሴዳር እንጨት፣ ቬቲቨር',
+      'note.c3b': 'የታችኛ: ቆዳ፣ ትምባሆ',
+      'note.c3l': 'ጸንቶ መቆየት: 10-12 ሰዓታት',
+      'note.c4t': 'የላይኛ: የባህር ጨው፣ ሎሚ',
+      'note.c4h': 'መካከለኛ: የባህር ስምምነት፣ ከነማ',
+      'note.c4b': 'የታችኛ: ተንሳፋፊ እንጨት፣ አምበርግሪስ',
+      'note.c4l': 'ጸንቶ መቆየት: 6-8 ሰዓታት',
+      'note.c5t': 'የላይኛ: በርጋሞት፣ የቀይ ብርቱካን',
+      'note.c5h': 'መካከለኛ: ኔሮሊ፣ ፔቲግሬን',
+      'note.c5b': 'የታችኛ: ነጭ ሴዳር፣ ሙስክ',
+      'note.c5l': 'ጸንቶ መቆየት: 5-7 ሰዓታት',
+      'note.c6t': 'የላይኛ: ራም፣ ካራሜል',
+      'note.c6h': 'መካከለኛ: የቫኒላ ኦርኪድ፣ ቶንካ',
+      'note.c6b': 'የታችኛ: ቤንዞይን፣ ሳንዳል እንጨት',
+      'note.c6l': 'ጸንቶ መቆየት: 10+ ሰዓታት',
+      'add.bag': 'ወደ ቦርሳ ጨምር',
+      'best.tag': 'በጣም ተወዳጅ',
+      'best.title': 'ምርጥ <span class="italic">ሽያጮች</span>',
+      'best.desc': 'የዓለም እጅግ ተፈላጊ ሽቶዎች፣ በባለሙያዎች የተመረጡ',
+      'badge.bestseller': 'ምርጥ ሽያጭ',
+      'badge.new': 'አዲስ',
+      'prod.notes1': 'ሳፍሮን · ያስሚን · አምበር እንጨት',
+      'prod.notes2': 'አናናስ · በርች · ሙስክ',
+      'prod.notes3': 'ትራፍል · ኦርኪድ · ፓቹሊ',
+      'prod.notes4': 'አልዲሃይድ · ጽጌረዳ · ያስሚን',
+      'add.short': 'ጨምር',
+      'show.tag': 'ሙሉ ተሞክሮ',
+      'show.title': 'በ<span class="italic">3D</span> ያስሱ',
+      'show.desc': 'በይነተገናኝ 3D ማሳያ በኩል ሽቶዎቻችንን ያግኙ። እያንዳንዱን ጠርሙስ በእጅዎ እንዳለ ያሽከርክሩት፣ ያጉሉት፣ ይተማመኑት።',
+      'show.f1': '360° የጠርሙስ እይታ',
+      'show.f2': 'በይነተገናኝ የሽታ ግኝት',
+      'show.f3': 'ምናባዊ የመሞከር ቴክኖሎጂ',
+      'show.f4': 'በAI የተደገፈ የሽታ ማዛመድ',
+      'show.btn': '3D ተሞክሮ ይጀምሩ',
+      'rev.tag': 'የሚሉት ነገር',
+      'rev.title': 'የደንበኞች <span class="italic">አስተያየት</span>',
+      'rev.desc': 'በዓለም ዙሪያ ከ100,000 በላይ የሽቶ ባለሙያዎች ታምነውበታል',
+      'rev.t1': '"LUXE SCENT የሽቶ ስብስቤን ሙሉ በሙሉ ቀይሮታል። የገዛሁት Baccarat Rouge 540 በጣም ድንቅ ነው — እውነተኛ፣ ለረጅም ጊዜ የሚቆይ፣ እና ማሸጊያው ፍጹም ነበር።"',
+      'rev.t2': '"እንደ የሽቶ አፍቃሪ፣ ስለ እውነተኝነት በጣም እጠባበቃለሁ። LUXE SCENT ሁሉንም ተስፋዎች አልፏል። Creed Aventus በትክክል የታሸገ እና የተረጋገጠ የምርት ቁጥር ይዞ ደርሷል።"',
+      'rev.t3': '"ለባለቤቴ ያዘዝኩት የስጦታ ስብስብ በእጅ የተጻፈ ማስታወሻ ይዞ በሚያምር ሁኔታ ተጠቅልሎ ደርሷል። Tom Ford Black Orchid አዲሱ የእሷ ልዩ ሽቶ ነው። ከመጀመሪያ እስከ መጨረሻ የላቀ አገልግሎት።"',
+      'rev.role1': 'የተረጋገጠ ገዢ · ፓሪስ',
+      'rev.role2': 'የተረጋገጠ ገዢ · ኒው ዮርክ',
+      'rev.role3': 'የተረጋገጠ ገዢ · ለንደን',
+      'sale.tag': 'ውስን ጊዜ ቅናሽ',
+      'sale.title': 'የበጋ <span class="italic">ሽያጭ</span>',
+      'sale.desc': 'እስከ 40% ቅናሽ በተመረጡ የቅንጦት ሽቶዎች · እስከ ነሐሴ 15, 2026 ድረስ',
+      'sale.btn': 'ሽያጩን ይግዙ',
+      'news.tag': 'ውስጣዊ ክበብ ይቀላቀሉ',
+      'news.title': 'ለልዩ <span class="italic">ተደራሽነት</span> ይመዝገቡ',
+      'news.desc': 'አዲስ ምርቶች፣ የግል ሽያጮች እና ነፃ የሽቶ ናሙናዎች',
+      'news.placeholder': 'ኢሜይል አድራሻዎን ያስገቡ',
+      'news.btn': 'ይመዝገቡ',
+      'news.alert': 'እንኳን ወደ LUXE SCENT ቤተሰብ መጡ!',
+      'foot.desc': 'ከ2010 ጀምሮ የዓለምን ምርጥ ሽቶዎች እናቀርባለን። እያንዳንዱ ሽቶ ስለ ጸጋ፣ ጥበብ እና ዘላለማዊ ቅንጦት ታሪክ ይናገራል።',
+      'foot.shop': 'ግዢ',
+      'foot.company': 'ኩባንያ',
+      'foot.support': 'ድጋፍ',
+      'foot.new': 'አዲስ ደረሱ',
+      'foot.best': 'ምርጥ ሽያጮች',
+      'foot.collection': 'የD/T ስብስብ',
+      'foot.men': 'የወንዶች ሽቶዎች',
+      'foot.women': 'የሴቶች ሽቶዎች',
+      'foot.gifts': 'የስጦታ ስብስቦች',
+      'foot.about': 'ስለ እኛ',
+      'foot.story': 'ታሪካችን',
+      'foot.careers': 'ስራዎች',
+      'foot.press': 'ፕሬስ',
+      'foot.sustain': 'ዘላቂነት',
+      'foot.contact': 'ያግኙን',
+      'foot.faq': 'ተደጋጋሚ ጥያቄዎች',
+      'foot.shipping': 'የመላኪያ መረጃ',
+      'foot.returns': 'መመለስ',
+      'foot.privacy': 'የግላዊነት ፖሊሲ',
+      'foot.copy': '© 2026 LUXE SCENT. ሁሉም መብቶች የተጠበቁ ናቸው።'
+    }
+  };
+
+  const langBtn = document.getElementById('langBtn');
+  const langDropdown = document.getElementById('langDropdown');
+  const langLabel = document.getElementById('langLabel');
+  let currentLang = localStorage.getItem('luxeLang') || 'en';
+
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle('active');
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.lang-switcher')) langDropdown.classList.remove('active');
+  });
+  document.querySelectorAll('.lang-dropdown button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.dataset.lang);
+      langDropdown.classList.remove('active');
+    });
+  });
+
+  function setLanguage(lang) {
+    if (!translations[lang]) lang = 'en';
+    currentLang = lang;
+    localStorage.setItem('luxeLang', lang);
+    const t = translations[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.dataset.i18nHtml;
+      if (t[key]) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (t[key]) el.placeholder = t[key];
+    });
+    document.title = t['meta.title'];
+    langLabel.textContent = lang === 'am' ? 'አማ' : 'EN';
+    document.querySelectorAll('.lang-dropdown button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+  setLanguage(currentLang);
+
+  // ============ THEME TOGGLE ============
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('luxeTheme') || 'dark';
+  root.setAttribute('data-theme', savedTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('luxeTheme', next);
+  });
+
+  // ============ FLOATING PARTICLES ============
+  const particlesContainer = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+    particle.style.width = particle.style.height = (2 + Math.random() * 4) + 'px';
+    particlesContainer.appendChild(particle);
+  }
+
+  // ============ 3D TILT ON PRODUCT CARDS ============
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  // ============ LIGHTBOX (FULLSCREEN IMAGE VIEWER) ============
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCount = document.getElementById('lightboxCount');
+  const lightboxImages = [
+    ...document.querySelectorAll('.card-front img'),
+    ...document.querySelectorAll('.product-image img')
+  ];
+  let lightboxIndex = 0;
+
+  function openLightbox(index) {
+    lightboxIndex = (index + lightboxImages.length) % lightboxImages.length;
+    const img = lightboxImages[lightboxIndex];
+    lightboxImg.src = img.src.replace(/w=\d+/, 'w=1600');
+    lightboxCaption.textContent = img.alt || 'LUXE SCENT';
+    lightboxCount.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  lightboxImages.forEach((img, index) => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(index);
+    });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    openLightbox(lightboxIndex - 1);
+  });
+  document.getElementById('lightboxNext').addEventListener('click', (e) => {
+    e.stopPropagation();
+    openLightbox(lightboxIndex + 1);
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') openLightbox(lightboxIndex - 1);
+    if (e.key === 'ArrowRight') openLightbox(lightboxIndex + 1);
+  });
+
+  // ============ NAVBAR SCROLL EFFECT ============
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.style.padding = '12px 60px';
+      navbar.style.background = 'var(--glass-bg)';
+    } else {
+      navbar.style.padding = '18px 60px';
+    }
+  });
+</script>
+
+</body>
+</html>
