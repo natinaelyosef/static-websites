@@ -24,18 +24,12 @@ jobs:
       - name: Prepare deployment folder (auto-detect all projects)
         run: |
           mkdir -p _site
-          # Copy root index.html if present (landing page)
           [ -f index.html ] && cp index.html _site/ || true
-          # Loop through every directory in the root
           for d in */; do
             dir_name="${d%/}"
-            # Exclude system/git/config folders
-            if [[ "$dir_name" != ".git" && 
-                  "$dir_name" != ".github" && 
-                  "$dir_name" != "node_modules" && 
-                  "$dir_name" != "_site" ]]; then
+            if [[ "$dir_name" != ".git" && "$dir_name" != ".github" && "$dir_name" != "node_modules" && "$dir_name" != "_site" ]]; then
               echo "✅ Detected project folder: $dir_name - copying..."
-              cp -r "$dir_name" _site/
+              cp -r "$dir_name" "_site/"
             fi
           done
           echo "📂 Contents of _site:"
