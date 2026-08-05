@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visit Ethiopia 🇪🇹 — Land of Origins</title>
+<meta name="description" content="Explore Ethiopia region by region: historical sites, national parks, lakes, volcanoes, festivals, coffee & cuisine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.setAttribute("data-theme", localStorage.getItem("et-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));</script>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="navbar" id="navbar">
+  <a class="logo" href="#home">🇪🇹 Visit<span>Ethiopia</span></a>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-i18n="home">Home</a></li>
+      <li><a href="#regions" data-i18n="regions">Regions</a></li>
+      <li><a href="#explore" data-i18n="explore">Explore</a></li>
+      <li><a href="#unesco" data-i18n="unesco">UNESCO</a></li>
+      <li><a href="#festivals" data-i18n="festivals">Festivals</a></li>
+      <li><a href="#cuisine" data-i18n="cuisine">Cuisine</a></li>
+      <li><a href="#wildlife" data-i18n="wildlife">Wildlife</a></li>
+      <li><a href="#contact" data-i18n="contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="am">አማ</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    <span class="fav-count" id="favCount" title="Saved places">♥ 0</span>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <div class="hero-media" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-kicker" data-i18n="heroKicker">🌍 The Cradle of Humanity</p>
+    <h1 class="hero-title" id="heroTitle" data-i18n="heroTitle">Discover <em>Ethiopia</em>,<br>Land of Origins</h1>
+    <p class="hero-sub" id="heroSub" data-i18n="heroSub">Thirteen months of sunshine. Rock-hewn churches, smoking volcanoes, rare wildlife,
+      ancient coffee ceremonies and festivals older than empires — across 12 unforgettable regions.</p>
+    <div class="hero-cta">
+      <a href="#regions" class="btn btn-primary" id="heroExplore" data-i18n="heroExplore">Explore Regions</a>
+      <a href="#explore" class="btn btn-ghost" id="heroBrowse" data-i18n="heroBrowse">Browse Attractions</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>12</strong><span data-i18n="statsRegions">Regions</span></div>
+      <div><strong>40+</strong><span data-i18n="statsAttractions">Attractions</span></div>
+      <div><strong>10</strong><span data-i18n="statsUNESCO">UNESCO Sites</span></div>
+      <div><strong>860+</strong><span data-i18n="statsBirds">Bird Species</span></div>
+    </div>
+  </div>
+  <div class="flag-stripe"></div>
+</section>
+
+<main>
+<section class="section categories-section reveal" id="categories">
+  <div class="category-header">
+    <h2 class="sec-title" data-i18n="quickBrowse">Browse by Theme</h2>
+    <div class="flag-bar"></div>
+  </div>
+  <div class="grid category-grid">
+    <a class="category-card" href="#unesco">
+      <span class="category-icon">🏅</span>
+      <h3 data-i18n="unesco">UNESCO</h3>
+      <p data-i18n="unescoDesc">Explore Ethiopia’s world heritage treasures.</p>
+    </a>
+    <a class="category-card" href="#festivals">
+      <span class="category-icon">🎉</span>
+      <h3 data-i18n="festivals">Festivals</h3>
+      <p data-i18n="festivalsDesc">Join the country’s colorful faith and harvest celebrations.</p>
+    </a>
+    <a class="category-card" href="#cuisine">
+      <span class="category-icon">🍲</span>
+      <h3 data-i18n="cuisine">Cuisine</h3>
+      <p data-i18n="cuisineDesc">Taste iconic dishes from injera to doro wat.</p>
+    </a>
+    <a class="category-card" href="#wildlife">
+      <span class="category-icon">🦁</span>
+      <h3 data-i18n="wildlife">Wildlife</h3>
+      <p data-i18n="wildlifeDesc">Discover endemic mammals, birds and national parks.</p>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════ REGIONS ══════════ -->
+<section class="section" id="regions">
+  <h2 class="sec-title reveal" data-i18n="regionsTitle">Explore by Region</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal" data-i18n="regionsSub">From the Danakil Desert to the Omo Valley — tap a region to see its must-see places.</p>
+  <div class="grid regions-grid" id="regionGrid"></div>
+</section>
+
+<!-- ══════════ EXPLORE / FILTER ══════════ -->
+<section class="section alt" id="explore">
+  <h2 class="sec-title reveal" data-i18n="attractionsTitle">Tourist Attractions</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub" id="resultCount"></p>
+  <div class="controls">
+    <input type="search" id="search" data-i18n-placeholder="searchPlaceholder" placeholder="🔍 Search attractions… (e.g. Lalibela, volcano, coffee)">
+    <select id="regionSelect" aria-label="Filter by region"></select>
+  </div>
+  <div class="chips" id="catChips"></div>
+  <div class="grid dest-grid" id="destGrid"></div>
+  <p class="empty" id="emptyState" hidden>😕 No matches — try another search or filter.</p>
+</section>
+
+<!-- ══════════ UNESCO ══════════ -->
+<section class="section" id="unesco">
+  <h2 class="sec-title reveal">🏅 UNESCO World Heritage Sites</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal">Ethiopia is home to ten World Heritage Sites — more than any other country in Africa.</p>
+  <div class="grid unesco-grid" id="unescoGrid"></div>
+</section>
+
+<!-- ══════════ FESTIVALS ══════════ -->
+<section class="section alt" id="festivals">
+  <h2 class="sec-title reveal">🎉 Festivals & Celebrations</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal">Ancient faith, color and music — plan your trip around a festival.</p>
+  <div class="grid fest-grid" id="festGrid"></div>
+</section>
+
+<!-- ══════════ CUISINE & COFFEE ══════════ -->
+<section class="section" id="cuisine">
+  <h2 class="sec-title reveal">🍲 Taste Ethiopia</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal">A cuisine like no other — sour injera, fiery berbere, and the birthplace of coffee.</p>
+  <div class="grid dish-grid" id="dishGrid"></div>
+  <div class="coffee-box reveal">
+    <div>
+      <h3>☕ Coffee Tourism</h3>
+      <p>Ethiopia is the birthplace of Arabica coffee. Join a traditional <strong>buna</strong> ceremony —
+         roasting, grinding and three rounds of coffee — right at the farm.</p>
+    </div>
+    <div class="coffee-list" id="coffeeList"></div>
+  </div>
+</section>
+
+<!-- ══════════ WILDLIFE ══════════ -->
+<section class="section alt" id="wildlife">
+  <h2 class="sec-title reveal">🦁 Wildlife & Birds</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal">Ethiopia is a biodiversity hotspot — endemic species found nowhere else on Earth.</p>
+  <div class="wild-stats reveal">
+    <div><strong>13</strong><span>Featured mammals</span></div>
+    <div><strong>5</strong><span>Endemic mammals</span></div>
+    <div><strong>860+</strong><span>Bird species</span></div>
+    <div><strong>31</strong><span>Endemic birds</span></div>
+  </div>
+  <div class="wild-blocks">
+    <div class="panel reveal">
+      <div class="panel-head mammals"><span class="icon">🐾</span><div><h3>Animals to See</h3><p>Ethiopian big game &amp; endemics</p></div></div>
+      <div class="panel-inner"><div class="animal-grid" id="mammalList"></div></div>
+    </div>
+    <div class="panel reveal">
+      <div class="panel-head birds"><span class="icon">🦅</span><div><h3>Birdwatching</h3><p>860+ species — a birder's paradise</p></div></div>
+      <div class="panel-inner"><div class="animal-grid" id="birdList"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRAVEL TIPS ══════════ -->
+<section class="section" id="tips">
+  <h2 class="sec-title reveal">🧭 Good to Know</h2>
+  <div class="flag-bar"></div>
+  <p class="sec-sub reveal">Quick travel tips before you go.</p>
+  <div class="grid tips-grid" id="tipsGrid"></div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section alt" id="contact">
+  <h2 class="sec-title reveal">📬 Plan Your Trip</h2>
+  <div class="flag-bar"></div>
+  <div class="contact-wrap">
+    <div class="contact-info reveal">
+      <h3>Let's build your Ethiopian journey</h3>
+      <p>Questions about itineraries, festivals or trekking permits? Send us a message.</p>
+      <ul>
+        <li>📍 Addis Ababa, Ethiopia</li>
+        <li>📞 +251 11 000 0000</li>
+        <li>✉️ hello@visit-ethiopia.example</li>
+        <li>🕒 Mon–Sat, 8:30–17:30 EAT</li>
+      </ul>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Email address" required>
+      <select>
+        <option value="">Region of interest…</option>
+        <option>Addis Ababa</option><option>Amhara</option><option>Oromia</option>
+        <option>Tigray</option><option>Southern Ethiopia</option><option>Sidama</option>
+        <option>Afar</option><option>Harari</option><option>Somali</option>
+        <option>Gambella</option><option>Benishangul-Gumuz</option><option>Dire Dawa</option>
+      </select>
+      <textarea rows="4" placeholder="Tell us about your dream trip…" required></textarea>
+      <button class="btn btn-primary" type="submit">Send Message ✈️</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>🇪🇹 Visit Ethiopia</h4>
+      <p>A static demo tourism guide celebrating the history, nature, cultures and flavors of Ethiopia — region by region.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="#regions">Regions</a><a href="#explore">Attractions</a>
+      <a href="#unesco">UNESCO Sites</a><a href="#festivals">Festivals</a>
+    </div>
+    <div>
+      <h4>Experience</h4>
+      <a href="#cuisine">Cuisine & Coffee</a><a href="#wildlife">Wildlife</a>
+      <a href="#tips">Travel Tips</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© <span id="year"></span> Visit Ethiopia — Built with HTML • CSS • JS</span>
+    <span class="mini-flag"></span>
+  </div>
+</footer>
+
+<!-- ══════════ MODAL ══════════ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="overlay" data-close></div>
+  <div class="dialog" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close aria-label="Close">✕</button>
+    <div class="modal-banner" id="modalBanner"><span></span></div>
+    <div class="modal-body">
+      <span class="region-tag" id="modalRegion"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <div class="modal-meta">
+        <span class="region-tag" id="modalCategory"></span>
+        <a class="map-link" id="modalMapLink" href="#" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+      </div>
+      <div id="modalHWrap"><h4>✨ Highlights</h4><ul id="modalHighlights"></ul></div>
+      <h4>🎯 Activities</h4>
+      <div class="acts" id="modalActs"></div>
+    </div>
+  </div>
+</div>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
