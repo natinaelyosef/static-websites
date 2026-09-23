@@ -1,6 +1,7 @@
 "use strict";
 const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ══════════════ DATA ══════════════ */
 const REGIONS = [
@@ -116,100 +117,18 @@ const PIN = {
   "Hornbill":"img/hornbill.jpg"
 };
 const HERO_IMAGES = [
-  "img/abijatta-shalla-lakes.jpg",
-  "img/addis-ababa.jpg",
-  "img/afar.jpg",
-  "img/aksum.jpg",
-  "img/amhara.jpg",
-  "img/arba-minch-lakes-abaya-chamo.jpg",
-  "img/ashenda.jpg",
-  "img/awash-national-park.jpg",
-  "img/axum.jpg",
-  "img/babille-elephant-sanctuary.jpg",
-  "img/bale-mountains-national-park.jpg",
-  "img/baro-river.jpg",
-  "img/benishangul-gumuz.jpg",
-  "img/beyaynetu.jpg",
-  "img/blue-nile-falls-tis-issat.jpg",
-  "img/blue-nile-valley.jpg",
-  "img/blue-winged-goose.jpg",
-  "img/buffalo.jpg",
-  "img/crocodile.jpg",
-  "img/dallol.jpg",
-  "img/danakil-depression.jpg",
-  "img/debre-damo-monastery.jpg",
-  "img/dire-dawa.jpg",
-  "img/doro-wat.jpg",
-  "img/dorze-village.jpg",
-  "img/eid-al-fitr-eid-al-adha.jpg",
-  "img/elephant.jpg",
-  "img/enkutatash.jpg",
-  "img/entoto-park.jpg",
-  "img/erta-ale-volcano.jpg",
-  "img/ethio-djibouti-railway.jpg",
-  "img/ethiopian-wolf.jpg",
-  "img/fasika.jpg",
-  "img/fasil-ghebbi-gondar.jpg",
-  "img/firfir.jpg",
-  "img/fish-eagle.jpg",
-  "img/flamingo.jpg",
-  "img/gambella.jpg",
-  "img/gambella-national-park.jpg",
-  "img/gazelle.jpg",
-  "img/gedeo-cultural-landscape.jpg",
-  "img/gelada.jpg",
-  "img/genfo.jpg",
-  "img/genna.jpg",
-  "img/gheralta-mountains.jpg",
-  "img/gondar-fasil-ghebbi.jpg",
-  "img/grand-ethiopian-renaissance-dam.jpg",
-  "img/harari.jpg",
-  "img/harar-jugol.jpg",
-  "img/hippo.jpg",
-  "img/holy-trinity-cathedral.jpg",
-  "img/hornbill.jpg",
-  "img/hyena.jpg",
-  "img/hyena-feeding.jpg",
-  "img/injera.jpg",
-  "img/irreecha.jpg",
-  "img/jijiga.jpg",
-  "img/kezira-district.jpg",
-  "img/kitfo.jpg",
-  "img/kocho.jpg",
-  "img/konso-cultural-landscape.jpg",
-  "img/lake-hawassa.jpg",
-  "img/lake-tana.jpg",
   "img/lalibela-rock-hewn-churches.jpg",
-  "img/leopard.jpg",
-  "img/lion.jpg",
-  "img/lower-valley-of-the-awash.jpg",
-  "img/lower-valley-of-the-omo.jpg",
-  "img/merkato.jpg",
-  "img/meskel.jpg",
-  "img/meskel-square.jpg",
-  "img/mountain-nyala.jpg",
-  "img/national-museum.jpg",
-  "img/nechisar-national-park.jpg",
-  "img/omo-valley-tribes.jpg",
-  "img/oromia.jpg",
-  "img/pelican.jpg",
-  "img/shiro.jpg",
-  "img/sidama.jpg",
-  "img/sidama-coffee-farms.jpg",
   "img/simien-mountains-national-park.jpg",
-  "img/sof-omar-cave.jpg",
-  "img/somali.jpg",
-  "img/southern-ethiopia.jpg",
-  "img/thick-billed-raven.jpg",
-  "img/tibs.jpg",
-  "img/tigray.jpg",
-  "img/timket-epiphany.jpg",
-  "img/tiya-stelae.jpg",
-  "img/walia-ibex.jpg",
-  "img/wattled-ibis.jpg",
+  "img/dallol.jpg",
+  "img/omo-valley-tribes.jpg",
+  "img/gelada.jpg",
   "img/wenchi-crater-lake.jpg",
-  "img/yeha-temple.jpg",
-  "img/zebra.jpg"
+  "img/harar-jugol.jpg",
+  "img/blue-nile-falls-tis-issat.jpg",
+  "img/axum.jpg",
+  "img/bale-mountains-national-park.jpg",
+  "img/erta-ale-volcano.jpg",
+  "img/lake-tana.jpg"
 ];
 const PIN_UNESCO = { "Lalibela Rock-Hewn Churches": "https://i.pinimg.com/736x/e4/9d/72/e49d7219a33fabcb27c98100e616d65c.jpg" };
 const pinImg = (name, cls, url) => (url || PIN[name]) ? `<img class="${cls || ""}" src="${url || PIN[name]}" alt="${name}" loading="lazy" onerror="this.remove()">` : "";
@@ -217,24 +136,24 @@ const pinImg = (name, cls, url) => (url || PIN[name]) ? `<img class="${cls || ""
 const initHeroSlideshow = () => {
   const container = $(".hero-media");
   if (!container) return;
-  HERO_IMAGES.forEach((src, index) => {
+  const slides = HERO_IMAGES.map((src, index) => {
     const img = document.createElement('img');
     img.src = src;
     img.alt = `Ethiopia scene ${index + 1}`;
-    img.loading = 'lazy';
-    if (index === 0) img.classList.add('active');
+    img.loading = index === 0 ? 'eager' : 'lazy';
+    img.decoding = 'async';
+    if (index === 0 || REDUCED) img.classList.add('active');
     container.appendChild(img);
+    return img;
   });
+  if (REDUCED) return;
 
   let current = 0;
-  const slides = [...container.querySelectorAll('img')];
-  const changeSlide = () => {
+  setInterval(() => {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
-  };
-
-  setInterval(changeSlide, 6000);
+  }, 6000);
 };
 
 const DESTS = [
@@ -542,6 +461,7 @@ function renderRegions(){
       <div class="card-body"><span class="region-emoji">${r.e}</span><h3>${r.name}</h3><p>${r.blurb}</p>
       <span class="region-count">${n} attraction${n !== 1 ? "s" : ""} →</span></div></article>`;
   }).join("");
+  stagger($("#regionGrid"));
 }
 function renderSelect(){
   $("#regionSelect").innerHTML = `<option value="all">🌍 All Regions</option>` +
@@ -571,6 +491,7 @@ function renderDests(){
         <a class="map-link" href="${mapsUrl(d.n)}" target="_blank" rel="noopener noreferrer" data-i18n="viewMap">${translateString("viewMap")}</a>
       </div>
     </article>`).join("");
+  stagger($("#destGrid"));
   observeReveals();
 }
 function renderStatic(){
@@ -585,11 +506,15 @@ function renderStatic(){
   $("#mammalList").innerHTML = MAMMALS.map(animalCard).join("");
   $("#birdList").innerHTML = BIRDS.map(animalCard).join("");
   $("#tipsGrid").innerHTML = TIPS.map(([e, t, d]) => `<div class="tip-card reveal"><span>${e}</span><h3>${t}</h3><p>${d}</p></div>`).join("");
+  stagger($("#unescoGrid")); stagger($("#festGrid")); stagger($("#dishGrid"));
+  stagger($("#mammalList")); stagger($("#birdList")); stagger($("#tipsGrid"));
 }
 
 /* ══════════════ MODAL ══════════════ */
+let lastFocus = null;
 function openModal(i){
   const d = DESTS[i];
+  lastFocus = document.activeElement;
   $("#modalBanner").className = "modal-banner " + d.g;
   $("#modalBanner").innerHTML = `${pinImg(d.n, "banner-img")}${PIN[d.n] ? "" : `<span>${d.e}</span>`}`;
   $("#modalRegion").textContent = regionName(d.r);
@@ -603,8 +528,14 @@ function openModal(i){
   $("#modalActs").innerHTML = (d.a || []).map(x => `<span class="act">${x}</span>`).join("");
   $("#modal").classList.add("open");
   document.body.style.overflow = "hidden";
+  $(".modal-close").focus();
 }
-function closeModal(){ $("#modal").classList.remove("open"); document.body.style.overflow = ""; }
+function closeModal(){
+  if (!$("#modal").classList.contains("open")) return;
+  $("#modal").classList.remove("open");
+  document.body.style.overflow = "";
+  if (lastFocus && lastFocus.focus) lastFocus.focus();
+}
 
 /* ══════════════ FAVORITES ══════════════ */
 function updateFavCount(){ $("#favCount").textContent = `♥ ${favs.size}`; }
@@ -623,8 +554,16 @@ function toast(msg){
   clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
 }
 const io = new IntersectionObserver(es => es.forEach(en => {
-  if (en.isIntersecting){ en.target.classList.add("visible"); io.unobserve(en.target); }
+  if (en.isIntersecting){
+    en.target.classList.add("visible");
+    en.target.addEventListener("animationend", () => { en.target.style.animation = "none"; }, { once:true });
+    io.unobserve(en.target);
+  }
 }), { threshold:.12 });
+const stagger = container => {
+  if (!container) return;
+  [...container.children].forEach((el, i) => el.style.setProperty("--rd", Math.min(i * 60, 480) + "ms"));
+};
 function observeReveals(){ $$(".reveal:not(.visible)").forEach(el => io.observe(el)); }
 
 /* ══════════════ EVENTS ══════════════ */
@@ -636,7 +575,11 @@ $("#regionGrid").addEventListener("click", e => {
   $("#explore").scrollIntoView({ behavior:"smooth" });
 });
 $("#regionSelect").addEventListener("change", e => { state.region = e.target.value; renderDests(); });
-$("#search").addEventListener("input", e => { state.q = e.target.value; renderDests(); });
+let searchTimer;
+$("#search").addEventListener("input", e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { state.q = e.target.value; renderDests(); }, 180);
+});
 $("#catChips").addEventListener("click", e => {
   const chip = e.target.closest(".chip"); if (!chip) return;
   state.cat = chip.dataset.cat; renderChips(); renderDests();
@@ -651,8 +594,14 @@ $("#destGrid").addEventListener("click", e => {
 $("#modal").addEventListener("click", e => { if (e.target.closest("[data-close]")) closeModal(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
-$("#burger").addEventListener("click", () => $("#navLinks").classList.toggle("open"));
-$$("#navLinks a").forEach(a => a.addEventListener("click", () => $("#navLinks").classList.remove("open")));
+$("#burger").addEventListener("click", () => {
+  $("#navLinks").classList.toggle("open");
+  $("#burger").classList.toggle("open");
+});
+$$("#navLinks a").forEach(a => a.addEventListener("click", () => {
+  $("#navLinks").classList.remove("open");
+  $("#burger").classList.remove("open");
+}));
 
 /* ══════════════ THEME ══════════════ */
 const applyTheme = t => {
@@ -678,11 +627,48 @@ $("#contactForm").addEventListener("submit", e => {
   toast("✉️ Thank you! We'll reply soon. (Static demo)");
 });
 
+let scrollTicking = false;
 window.addEventListener("scroll", () => {
-  $("#navbar").classList.toggle("scrolled", scrollY > 40);
-  $("#toTop").classList.toggle("show", scrollY > 600);
-});
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    $("#progressBar").style.width = (max > 0 ? (scrollY / max) * 100 : 0) + "%";
+    $("#navbar").classList.toggle("scrolled", scrollY > 40);
+    $("#toTop").classList.toggle("show", scrollY > 600);
+    scrollTicking = false;
+  });
+}, { passive:true });
 $("#toTop").addEventListener("click", () => scrollTo({ top:0, behavior:"smooth" }));
+
+/* ══════════════ SCROLLSPY ══════════════ */
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    $$(".nav-links a").forEach(a =>
+      a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+  });
+}, { rootMargin:"-40% 0px -55% 0px" });
+["home","regions","explore","unesco","festivals","cuisine","wildlife","contact"]
+  .forEach(id => { const s = document.getElementById(id); if (s) spy.observe(s); });
+
+/* ══════════════ ANIMATED COUNTERS ══════════════ */
+const animateCount = el => {
+  const target = +el.dataset.count || 0;
+  const suffix = el.dataset.suffix || "";
+  if (REDUCED){ el.textContent = target + suffix; return; }
+  const dur = 1500, t0 = performance.now();
+  const step = now => {
+    const p = Math.min((now - t0) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+};
+const countIO = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting){ animateCount(en.target); countIO.unobserve(en.target); }
+}), { threshold:.6 });
+$$("[data-count]").forEach(el => countIO.observe(el));
 
 /* ══════════════ INIT ══════════════ */
 renderRegions(); renderSelect(); renderChips(); renderDests(); renderStatic();

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abel Tech — Premium Electronic Repair &amp; Systems Lab | Assosa</title>
+<meta name="description" content="Abel Tech by master technician Abel — Assosa's premier electronic repair laboratory for printers, commercial copiers, laptops, desktops, projectors, UPS & software. Free diagnosis. Call 0935 144 808.">
+<meta name="theme-color" content="#05070b">
+<meta property="og:title" content="Abel Tech — Premium Electronic Repair &amp; Systems Lab">
+<meta property="og:description" content="Precision repair for printers, copiers, PCs, projectors & power systems in Assosa. Free diagnosis, genuine parts, 90-day warranty.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f59e0b'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='34' font-weight='700' text-anchor='middle' fill='%231c0d00'%3EA%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: { extend: { fontFamily: {
+      sans: ['Inter','Noto Sans Ethiopic','system-ui','sans-serif'],
+      display: ['Sora','Noto Sans Ethiopic','system-ui','sans-serif'],
+    }}}
+  };
+</script>
+<script>
+  (function(){ try{ var t = localStorage.getItem('site_theme') || 'light'; document.documentElement.classList.toggle('dark', t==='dark'); }catch(e){ document.documentElement.classList.remove('dark'); } })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Abel Tech","description":"Electronic repair laboratory: printers, copiers, computers, projectors, UPS, software and networks in Assosa, Ethiopia.","telephone":"+251935144808","address":{"@type":"PostalAddress","addressLocality":"Assosa","addressRegion":"Benishangul-Gumuz","addressCountry":"ET"},"openingHours":"Mo-Sa 08:30-18:00"}
+</script>
+<style>
+  /* ============ DESIGN SYSTEM ============ */
+  :root{
+    --bg:#f7f6f2; --bg-2:#eeede6; --card:#ffffff; --card-2:#fbfaf7;
+    --bd:rgba(22,22,27,.09); --bd-2:rgba(22,22,27,.17);
+    --hd:#0f1014; --tx:#45464f; --mut:#85868e;
+    --acc:#ea580c; --acc-2:#f59e0b; --acc-t:#b45309; --acc-soft:rgba(234,88,12,.10);
+    --shadow:0 16px 38px -22px rgba(22,22,27,.28);
+  }
+  html.dark{
+    --bg:#05070b; --bg-2:#080b11; --card:#0c1017; --card-2:#10141d;
+    --bd:rgba(255,255,255,.07); --bd-2:rgba(255,255,255,.15);
+    --hd:#f1f4f9; --tx:#a7b0c0; --mut:#6a7280;
+    --acc:#f59e0b; --acc-2:#fbbf24; --acc-t:#fbbf24; --acc-soft:rgba(245,158,11,.13);
+    --shadow:0 18px 46px -24px rgba(0,0,0,.75);
+  }
+  html{scroll-behavior:smooth;scroll-padding-top:96px}
+  body{background:var(--bg);color:var(--tx);font-family:'Inter','Noto Sans Ethiopic',system-ui,sans-serif;-webkit-font-smoothing:antialiased;transition:background-color .35s ease,color .35s ease}
+  .font-display{font-family:'Sora','Noto Sans Ethiopic',system-ui,sans-serif}
+  ::selection{background:var(--acc);color:#1c0d00}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:rgba(130,140,155,.35);border-radius:9999px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--acc)}
+  :focus-visible{outline:2px solid var(--acc-2);outline-offset:2px;border-radius:6px}
+
+  .t-hd{color:var(--hd)} .t-tx{color:var(--tx)} .t-mut{color:var(--mut)} .t-acc{color:var(--acc-t)}
+  .bd{border-color:var(--bd)} .bd-2{border-color:var(--bd-2)}
+  .surface{background:var(--card)} .surface-2{background:var(--bg-2)}
+  .h2{font-family:'Sora','Noto Sans Ethiopic',sans-serif;font-weight:700;font-size:clamp(1.65rem,3.4vw,2.35rem);line-height:1.16;letter-spacing:-.02em;color:var(--hd)}
+  .sub{color:var(--tx);font-size:.95rem;line-height:1.65}
+
+  /* Nav */
+  .nav-glass{background:rgba(247,246,242,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+  html.dark .nav-glass{background:rgba(5,7,11,.82)}
+  .nav-glass.nav-scrolled{border-bottom-color:var(--bd);box-shadow:0 10px 30px -20px rgba(0,0,0,.3)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;border-radius:.85rem;cursor:pointer;transition:all .22s ease;border:none;font-family:inherit}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#1c0d00;padding:.8rem 1.4rem;font-size:.875rem;box-shadow:0 10px 26px -12px rgba(245,158,11,.55)}
+  .btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 14px 30px -12px rgba(245,158,11,.65)}
+  .btn-sm{padding:.55rem 1rem;font-size:.8rem}
+  .btn-secondary{background:var(--card);color:var(--hd);border:1px solid var(--bd-2);padding:.8rem 1.3rem;font-size:.875rem}
+  .btn-secondary:hover{border-color:var(--acc);color:var(--acc-t);background:var(--acc-soft)}
+  .btn-ghost{color:var(--tx);font-weight:600;font-size:.875rem;padding:.55rem .85rem;border-radius:.65rem}
+  .btn-ghost:hover{color:var(--acc-t);background:var(--acc-soft)}
+  .btn-tele{background:#229ED9;color:#fff;padding:.8rem 1.3rem;font-size:.875rem}
+  .btn-tele:hover{background:#1a8fc5;transform:translateY(-1px)}
+  .btn-wa{background:#1faa58;color:#fff;padding:.8rem 1.3rem;font-size:.875rem}
+  .btn-wa:hover{background:#189049;transform:translateY(-1px)}
+  .btn-dark{background:#150a01;color:#fde9c2;padding:.8rem 1.4rem;font-size:.875rem}
+  .btn-dark:hover{background:#221204;transform:translateY(-1px)}
+  .icon-btn{width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:.7rem;border:1px solid var(--bd-2);color:var(--tx);transition:all .2s}
+  .icon-btn:hover{border-color:var(--acc);color:var(--acc-t)}
+  .lang-btn{display:inline-flex;align-items:center;gap:.4rem;height:2.25rem;padding:0 .85rem;border-radius:.7rem;border:1px solid var(--bd-2);color:var(--tx);font-size:.75rem;font-weight:700;transition:all .2s}
+  .lang-btn:hover{border-color:var(--acc);color:var(--acc-t)}
+
+  /* Kicker + badge */
+  .kicker{display:inline-flex;align-items:center;gap:.55rem;color:var(--acc-t);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  .kicker::before{content:'';width:22px;height:2px;border-radius:2px;background:var(--acc-t)}
+  .badge-pill{display:inline-flex;align-items:center;gap:.55rem;padding:.45rem .95rem;border-radius:9999px;border:1px solid rgba(245,158,11,.35);background:var(--acc-soft);color:var(--acc-t);font-size:.72rem;font-weight:700}
+  .grad-text{background:linear-gradient(115deg,var(--acc-2) 5%,var(--acc) 60%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* Cards */
+  .card{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background-color .3s ease}
+  .card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.4);box-shadow:var(--shadow);background-color:var(--acc-soft)}
+  .card .zoom{transition:transform .55s ease}
+  .card:hover .zoom{transform:scale(1.06)}
+  .icon-tile{width:2.75rem;height:2.75rem;border-radius:.9rem;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc-t);transition:all .3s ease;flex-shrink:0}
+  .card:hover .icon-tile{background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#1c0d00;transform:rotate(-4deg)}
+  .card-link{margin-top:auto;display:inline-flex;align-items:center;gap:.45rem;color:var(--acc-t);font-size:.8rem;font-weight:700}
+  .card-link svg{transition:transform .25s ease}
+  .card-link:hover svg{transform:translateX(4px)}
+  .tag-chip{position:absolute;top:.75rem;left:.75rem;padding:.3rem .7rem;border-radius:9999px;background:rgba(5,7,11,.62);color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+
+  /* Chips (filters) */
+  .chip{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem .95rem;font-size:.75rem;font-weight:700;border-radius:9999px;border:1px solid var(--bd-2);background:var(--card);color:var(--tx);transition:all .2s ease;white-space:nowrap;cursor:pointer}
+  .chip:hover{border-color:var(--acc);color:var(--acc-t)}
+  .chip-active{background:linear-gradient(135deg,var(--acc-2),var(--acc))!important;color:#1c0d00!important;border-color:transparent!important;box-shadow:0 6px 16px -8px rgba(245,158,11,.5)}
+
+  /* Inputs & pills */
+  .input{width:100%;border-radius:.85rem;border:1px solid var(--bd-2);background:var(--bg);color:var(--hd);padding:.8rem 1rem;font-size:.875rem;font-family:inherit;transition:border-color .2s,box-shadow .2s}
+  .input::placeholder{color:var(--mut)}
+  .input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+  .input.invalid{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.15)}
+  .legend{display:block;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--hd);margin-bottom:.8rem}
+  .pill{display:flex;align-items:center;gap:.6rem;padding:.7rem .8rem;border:1px solid var(--bd-2);border-radius:.95rem;transition:all .2s ease;height:100%}
+  .pill:hover{border-color:var(--acc)}
+  .pill svg{color:var(--acc-t);flex-shrink:0}
+  .pill-t{display:block;font-size:.78rem;font-weight:700;color:var(--hd);line-height:1.2}
+  .pill-s{display:block;font-size:.6rem;color:var(--mut);margin-top:2px}
+  input:checked + .pill{border-color:var(--acc);background:var(--acc-soft)}
+  .pill-mini{justify-content:center;text-align:center}
+  input:checked + .pill-mini{background:linear-gradient(135deg,var(--acc-2),var(--acc));border-color:transparent}
+  input:checked + .pill-mini .pill-t{color:#1c0d00}
+
+  /* Hero effects */
+  .hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(52rem 30rem at 78% 10%,rgba(234,88,12,.09),transparent 60%),radial-gradient(40rem 26rem at 6% 85%,rgba(56,189,248,.06),transparent 60%)}
+  html.dark .hero-glow{background:radial-gradient(52rem 30rem at 78% 10%,rgba(245,158,11,.14),transparent 62%),radial-gradient(40rem 26rem at 6% 85%,rgba(56,189,248,.06),transparent 60%)}
+  .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:radial-gradient(70% 55% at 60% 5%,#000 20%,transparent 75%);mask-image:radial-gradient(70% 55% at 60% 5%,#000 20%,transparent 75%);opacity:.55}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+  .orb-1{width:20rem;height:20rem;top:-5rem;right:-6rem;background:rgba(245,158,11,.15)}
+  .orb-2{width:24rem;height:24rem;bottom:-9rem;left:-9rem;background:rgba(56,189,248,.07)}
+  /* Marquee */
+  .mask-x{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .marquee-track{animation:marquee 34s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+  .mq-item{font-family:'Sora','Noto Sans Ethiopic',sans-serif;font-weight:600;font-size:1rem;color:var(--mut);white-space:nowrap}
+  .mq-dot{width:6px;height:6px;border-radius:9999px;background:rgba(245,158,11,.45);flex-shrink:0}
+
+  /* Process ghost numbers */
+  .ghost-num{font-family:'Sora','Noto Sans Ethiopic',sans-serif;font-weight:800;font-size:2.7rem;line-height:1;background:linear-gradient(180deg,var(--acc-2),var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* Guarantee glow card */
+  .glow-card{position:relative;background:var(--card);border:1px solid var(--bd)}
+  .glow-card::before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(120deg,rgba(245,158,11,.55),transparent 40%,rgba(245,158,11,.22));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+  .glow-card::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,var(--acc-soft),transparent 55%);pointer-events:none}
+
+  /* Booking side panel */
+  .booking-side{background:linear-gradient(150deg,var(--acc-2),var(--acc));color:#1c0d00;position:relative}
+  .booking-side::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(28,13,0,.16) 1px,transparent 1.5px);background-size:22px 22px;pointer-events:none}
+  .side-num{width:1.7rem;height:1.7rem;border-radius:9999px;background:rgba(28,13,0,.14);color:#1c0d00;font-weight:800;font-size:.8rem;display:grid;place-items:center;flex-shrink:0}
+  .side-btn{display:flex;align-items:center;gap:.6rem;background:#150a01;color:#fde68a;border-radius:.85rem;padding:.8rem 1.1rem;font-weight:700;font-size:.85rem;transition:all .22s ease}
+  .side-btn:hover{background:#221204;transform:translateY(-1px)}
+
+  /* CTA panel */
+  .cta-panel{background:linear-gradient(125deg,var(--acc-2),var(--acc) 75%);color:#1c0d00;position:relative;overflow:hidden}
+  .cta-panel::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(28,13,0,.15) 1px,transparent 1.5px);background-size:22px 22px;pointer-events:none}
+
+  /* Avatar / testimonial */
+  .avatar{width:2.5rem;height:2.5rem;border-radius:9999px;background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#1c0d00;font-weight:800;display:grid;place-items:center;font-size:.85rem;font-family:'Sora',sans-serif;flex-shrink:0}
+
+  /* FAQ */
+  .faq-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .faq-item[aria-expanded="true"] .faq-body{max-height:480px}
+  .faq-icon{transition:transform .3s ease,background .3s ease}
+  .faq-item[aria-expanded="true"] .faq-icon{transform:rotate(45deg);background:var(--acc-soft)}
+
+  /* Map */
+  .map-frame{filter:grayscale(1) contrast(1.03);transition:filter .45s ease;border:0;display:block;width:100%;height:100%;min-height:320px}
+  .map-frame:hover{filter:none}
+  html.dark .map-frame{filter:grayscale(1) brightness(.92) contrast(1.05)}
+
+  /* Location icons */
+  .loc-ico{width:2.4rem;height:2.4rem;border-radius:.8rem;background:var(--acc-soft);color:var(--acc-t);display:grid;place-items:center;flex-shrink:0}
+
+  /* Mobile bar */
+  .mobile-bar{background:rgba(12,16,23,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.12);padding-bottom:env(safe-area-inset-bottom)}
+  html:not(.dark) .mobile-bar{background:rgba(255,255,255,.94);border-top-color:rgba(22,22,27,.12)}
+  .mb-action{display:flex;flex-direction:column;align-items:center;gap:3px;padding:.6rem .5rem;font-size:10.5px;font-weight:700;color:#a7b0c0}
+  html:not(.dark) .mb-action{color:#45464f}
+  .mb-action.primary{color:var(--acc-t)}
+
+  /* Modal */
+  .modal-overlay{background:rgba(2,5,10,.68);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .modal-panel{transform:scale(.95) translateY(10px);opacity:0;transition:all .3s cubic-bezier(.2,.8,.3,1.05)}
+  #ticketModal.show .modal-panel{transform:none;opacity:1}
+  .ticket-code{font-family:'Sora',sans-serif;font-weight:800;font-size:1.55rem;letter-spacing:.12em;color:var(--acc-t);border:1px dashed var(--bd-2);border-radius:1rem;padding:.9rem;text-align:center;background:var(--acc-soft)}
+
+  /* Toast */
+  .toast-wrap{position:fixed;left:50%;transform:translateX(-50%);bottom:5.6rem;z-index:90;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none;width:max-content;max-width:92vw}
+  @media(min-width:768px){.toast-wrap{bottom:1.5rem}}
+  .toast{background:#141820;color:#e8edf4;padding:.7rem 1.15rem;border-radius:.9rem;font-size:.82rem;font-weight:600;box-shadow:0 14px 34px -14px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);animation:toast-in .3s ease,toast-out .35s ease 2.5s forwards;max-width:92vw;text-align:center}
+  @keyframes toast-in{from{opacity:0;transform:translateY(10px)}}
+  @keyframes toast-out{to{opacity:0;transform:translateY(6px)}}
+
+  /* Back to top */
+  .to-top{position:fixed;right:1.25rem;bottom:5.6rem;z-index:40;width:42px;height:42px;border-radius:9999px;display:grid;place-items:center;background:var(--card);border:1px solid var(--bd-2);color:var(--tx);box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s ease;cursor:pointer}
+  .to-top.show{opacity:1;transform:none;pointer-events:auto}
+  .to-top:hover{color:var(--acc-t);border-color:var(--acc)}
+  @media(min-width:768px){.to-top{bottom:1.5rem}}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s ease;will-change:opacity,transform}
+  .reveal.in{opacity:1;transform:none}
+  .hero-image{opacity:0;transform:translateX(42px);transition:opacity 1.2s ease-in-out,transform 1.2s ease-in-out;will-change:opacity,transform}
+  .hero-image.in{opacity:1;transform:none}
+  .reveal-scale{transform:translateY(12px) scale(.95)}
+  .reveal-scale.in{transform:none}
+  .reveal-right{transform:translateX(28px)}
+  .reveal-right.in{transform:none}
+  .about-copy > p{opacity:0;transform:translateX(16px);transition:opacity .5s ease,transform .5s ease}
+  .about-copy.in > p{opacity:1;transform:none}
+  .about-copy.in > p:nth-of-type(1){transition-delay:.08s}
+  .about-copy.in > p:nth-of-type(2){transition-delay:.16s}
+  .stagger-grid > .reveal:nth-child(2){transition-delay:.08s}
+  .stagger-grid > .reveal:nth-child(3){transition-delay:.16s}
+  .stagger-grid > .reveal:nth-child(4){transition-delay:.24s}
+  .stagger-grid > .reveal:nth-child(5){transition-delay:.32s}
+  .stagger-grid > .reveal:nth-child(6){transition-delay:.4s}
+  .stagger-grid > .reveal:nth-child(7){transition-delay:.48s}
+  .stagger-grid > .reveal:nth-child(8){transition-delay:.56s}
+  .stagger-grid > .reveal:nth-child(9){transition-delay:.64s}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal,.hero-image{opacity:1!important;transform:none!important}
+    html{scroll-behavior:auto!important}
+  }
+</style>
+</head>
+
+<body class="min-h-screen antialiased">
+
+<!-- Scroll progress -->
+<div id="scrollProgress" class="fixed top-0 left-0 h-[3px] w-0 z-[60]" style="background:linear-gradient(90deg,var(--acc-2),var(--acc))" aria-hidden="true"></div>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold" style="focus background:var(--acc);color:#1c0d00;background:var(--acc);color:#1c0d00">Skip to content</a>
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-50 nav-glass">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 lg:h-[74px] flex items-center justify-between gap-3" aria-label="Main">
+    <a href="#top" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-9 h-9 rounded-xl grid place-items-center font-display font-extrabold text-lg" style="background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#1c0d00">A</div>
+      <div class="leading-tight">
+        <span class="block font-display font-bold text-[15px] t-hd">Abel<span class="t-acc">Tech</span></span>
+        <span class="hidden sm:block text-[9.5px] font-bold tracking-[.16em] uppercase t-mut" data-i18n="brand-sub">Electronics Lab · Assosa</span>
+      </div>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-1">
+      <li><a href="#services" class="btn-ghost" data-i18n="nav-services">Services</a></li>
+      <li><a href="#devices" class="btn-ghost" data-i18n="nav-devices">Devices</a></li>
+      <li><a href="#process" class="btn-ghost" data-i18n="nav-process">Process</a></li>
+      <li><a href="#about" class="btn-ghost" data-i18n="nav-about">Meet Abel</a></li>
+      <li><a href="#faq" class="btn-ghost" data-i18n="nav-faq">FAQ</a></li>
+      <li><a href="#location" class="btn-ghost" data-i18n="nav-location">Location</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button onclick="toggleTheme()" aria-label="Toggle dark mode" class="icon-btn">
+        <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <button onclick="toggleLanguage()" aria-label="Switch language" class="lang-btn hidden sm:inline-flex">
+        <span data-lang-label>አማርኛ</span>
+      </button>
+
+      <button onclick="scrollToBooking('Navbar')" class="btn btn-primary btn-sm hidden sm:inline-flex">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 9h18"/></svg>
+        <span data-i18n="btn-book">Book a Repair</span>
+      </button>
+
+      <button id="menuToggle" onclick="openMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="icon-btn lg:hidden">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div id="mobileMenu" class="fixed inset-0 z-[70] lg:hidden hidden" role="dialog" aria-modal="true" aria-label="Mobile menu">
+  <div class="m-overlay absolute inset-0 bg-black/60" onclick="closeMenu()"></div>
+  <div class="m-panel absolute top-0 right-0 h-full w-[86%] max-w-sm surface border-l bd p-5 flex flex-col overflow-y-auto">
+    <div class="flex justify-between items-center mb-7">
+      <span class="font-display font-bold text-lg t-hd">Abel<span class="t-acc">Tech</span></span>
+      <button onclick="closeMenu()" aria-label="Close menu" class="icon-btn">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul class="flex flex-col gap-1 text-sm font-semibold mb-7">
+      <li><a onclick="closeMenu()" href="#services" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-services">Services</a></li>
+      <li><a onclick="closeMenu()" href="#devices" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-devices">Devices</a></li>
+      <li><a onclick="closeMenu()" href="#process" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-process">Process</a></li>
+      <li><a onclick="closeMenu()" href="#about" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-about">Meet Abel</a></li>
+      <li><a onclick="closeMenu()" href="#faq" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-faq">FAQ</a></li>
+      <li><a onclick="closeMenu()" href="#location" class="block px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]" data-i18n="nav-location">Location</a></li>
+      <li><button onclick="toggleLanguage()" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[color:var(--acc-soft)] hover:text-[color:var(--acc-t)]"><span data-lang-label>አማርኛ</span> →</button></li>
+    </ul>
+    <div class="mt-auto space-y-2.5 pt-5 border-t bd">
+      <button onclick="closeMenu(); scrollToBooking('Mobile')" class="btn btn-primary w-full" data-i18n="btn-book">Book a Repair</button>
+      <a href="tel:0935144808" class="btn btn-secondary w-full" data-i18n="hero-btn-call">Call 0935 144 808</a>
+      <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="btn btn-tele w-full" data-i18n="btn-tele">Telegram</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section id="top" class="hero relative overflow-hidden">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-32 lg:pt-36 pb-20 lg:pb-28 grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+
+    <!-- Copy -->
+    <div class="lg:col-span-7 reveal">
+      <div class="badge-pill mb-6">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-60"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
+        </span>
+        <span data-i18n="hero-badge">Premium Electronics Repair Lab · Assosa</span>
+      </div>
+
+      <h1 class="font-display font-extrabold tracking-tight leading-[1.06] text-4xl sm:text-5xl lg:text-6xl t-hd mb-5">
+        <span class="block" data-i18n="hero-title-a">Precision repair for</span>
+        <span class="block grad-text" data-i18n="hero-title-b">the machines your work runs on.</span>
+      </h1>
+
+      <p class="t-tx text-base sm:text-lg leading-relaxed mb-8 max-w-xl" data-i18n="hero-desc">
+        From jammed printheads and copier rebuilds to board-level micro-soldering, projector optics and UPS circuits — master technician Abel brings lab-grade care to every machine in Assosa.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <button onclick="scrollToBooking('Hero')" class="btn btn-primary px-6 py-3.5 text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 9h18"/></svg>
+          <span data-i18n="hero-btn-book">Book a Repair</span>
+        </button>
+        <a href="tel:0935144808" class="btn btn-secondary px-6 py-3.5 text-sm">
+          <svg class="w-4 h-4 t-acc" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+          <span data-i18n="hero-btn-call">Call 0935 144 808</span>
+        </a>
+      </div>
+
+      <dl class="mt-12 pt-8 border-t bd grid grid-cols-3 gap-6 max-w-lg">
+        <div>
+          <dd class="text-3xl sm:text-[2.1rem] font-display font-extrabold t-hd"><span data-count="3">0</span>+</dd>
+          <dt class="mt-1 text-[10.5px] font-bold uppercase tracking-wider t-mut" data-i18n="stat-years">Years at the bench</dt>
+        </div>
+        <div>
+          <dd class="text-3xl sm:text-[2.1rem] font-display font-extrabold t-hd"><span data-count="100">0</span>%</dd>
+          <dt class="mt-1 text-[10.5px] font-bold uppercase tracking-wider t-mut" data-i18n="stat-devices">Customer Satisfaction </dt>
+        </div>
+        <div>
+          <dd class="text-3xl sm:text-[2.1rem] font-display font-extrabold t-hd"><span data-count="100">0</span>%</dd>
+          <dt class="mt-1 text-[10.5px] font-bold uppercase tracking-wider t-mut" data-i18n="stat-diag">Diagnosis, always free</dt>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Visual -->
+    <div class="lg:col-span-5 reveal">
+      <div class="relative">
+        <div class="rounded-3xl overflow-hidden border bd shadow-2xl relative">
+          <img src="img/able.jpg"
+               onerror="handleImgError(this)" alt="Technician working on electronic circuit boards"
+               width="800" height="520" loading="eager" decoding="async"
+               class="hero-image reveal w-full h-[320px] sm:h-[420px] object-cover zoom">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent"></div>
+          <span class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-black/60 text-white text-[11px] font-semibold backdrop-blur" data-i18n="hero-photo-badge">Assosa · Bambu Hotel area</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1 t-mut">
+    <span class="text-[10px] font-bold uppercase tracking-[.25em]" data-i18n="scroll-hint">Scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ============ BRAND MARQUEE ============ -->
+<section class="border-y bd surface-2 py-6 marquee">
+  <p class="text-center text-[10.5px] font-bold uppercase tracking-[.22em] t-mut mb-4" data-i18n="marquee-label">Trusted with the brands Assosa runs on</p>
+  <div class="overflow-hidden mask-x">
+    <div class="marquee-track flex items-center gap-10 w-max px-5">
+      <span class="mq-item">Epson</span><span class="mq-dot"></span><span class="mq-item">HP</span><span class="mq-dot"></span><span class="mq-item">Canon</span><span class="mq-dot"></span><span class="mq-item">Ricoh</span><span class="mq-dot"></span><span class="mq-item">Xerox</span><span class="mq-dot"></span><span class="mq-item">Dell</span><span class="mq-dot"></span><span class="mq-item">Lenovo</span><span class="mq-dot"></span><span class="mq-item">Apple</span><span class="mq-dot"></span><span class="mq-item">APC</span><span class="mq-dot"></span><span class="mq-item">TP-Link</span><span class="mq-dot"></span><span class="mq-item">Optoma</span><span class="mq-dot"></span><span class="mq-item">BenQ</span><span class="mq-dot"></span><span class="mq-item">Samsung</span><span class="mq-dot"></span><span class="mq-item">Brother</span><span class="mq-dot"></span>
+      <span class="mq-item" aria-hidden="true">Epson</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">HP</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Canon</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Ricoh</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Xerox</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Dell</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Lenovo</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Apple</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">APC</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">TP-Link</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Optoma</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">BenQ</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Samsung</span><span class="mq-dot" aria-hidden="true"></span><span class="mq-item" aria-hidden="true">Brother</span><span class="mq-dot" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="py-20 sm:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-xl mb-12 reveal">
+      <div class="kicker" data-i18n="srv-kicker">What we do</div>
+      <h2 class="h2 mt-3 mb-3" data-i18n="srv-title">Repair services built on mastery</h2>
+      <p class="sub" data-i18n="srv-sub">From quick fixes to full rebuilds — every job handled with the same precision, honesty and genuine parts.</p>
+    </div>
+    <div id="servicesGrid" class="stagger-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ DEVICES LAB ============ -->
+<section id="devices" class="py-20 sm:py-24 px-4 sm:px-6 surface-2 border-y bd">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-xl mb-10 reveal">
+      <div class="kicker" data-i18n="dev-kicker">The device lab</div>
+      <h2 class="h2 mt-3 mb-3" data-i18n="dev-title">What we diagnose and repair</h2>
+      <p class="sub" data-i18n="dev-sub">Printers, copiers, computers, projectors, power backup, software and networks — one lab, every fix.</p>
+    </div>
+
+    <div id="filterRow" class="mb-8 -mx-4 px-4 overflow-x-auto no-scrollbar">
+      <div class="flex gap-2 w-max" role="tablist" aria-label="Device filters">
+        <button role="tab" aria-selected="true" onclick="filterDevices('all',this)" class="chip chip-active" data-i18n="filter-all">All</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('printer',this)" class="chip" data-i18n="filter-printers">Printers</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('copier',this)" class="chip" data-i18n="filter-copiers">Copiers</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('scanner',this)" class="chip" data-i18n="filter-scanners">Scanners</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('laptop',this)" class="chip" data-i18n="filter-laptops">Laptops</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('desktop',this)" class="chip" data-i18n="filter-desktops">Desktops</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('projector',this)" class="chip" data-i18n="filter-projectors">Projectors</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('ups',this)" class="chip" data-i18n="filter-ups">UPS &amp; Power</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('software',this)" class="chip" data-i18n="filter-software">Software</button>
+        <button role="tab" aria-selected="false" onclick="filterDevices('network',this)" class="chip" data-i18n="filter-network">Network</button>
+      </div>
+    </div>
+
+    <div id="deviceGrid" class="stagger-grid grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+    <p id="noDevices" class="hidden text-center text-sm t-mut py-14" data-i18n="dev-empty">No devices match this filter — try “All”.</p>
+  </div>
+</section>
+
+<!-- ============ PROCESS + STANDARD ============ -->
+<section id="process" class="py-20 sm:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-xl mb-12 reveal">
+      <div class="kicker" data-i18n="proc-kicker">How it works</div>
+      <h2 class="h2 mt-3 mb-3" data-i18n="proc-title">Four honest steps, zero surprises</h2>
+      <p class="sub" data-i18n="proc-sub">You always know what’s happening to your device — and what it costs — before anything is touched.</p>
+    </div>
+
+    <div id="stepsGrid" class="stagger-grid grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6"></div>
+
+    <div class="mt-14 surface border bd rounded-3xl p-6 sm:p-8 reveal">
+      <h3 class="font-display font-bold text-base t-hd mb-6" data-i18n="std-title">The Abel Tech standard</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex gap-3.5 items-start">
+          <span class="icon-tile !w-9 !h-9 !rounded-lg"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h4 class="text-sm font-bold t-hd" data-i18n="std-1">Free diagnosis</h4><p class="text-xs t-mut mt-1" data-i18n="std-1s">Fault-finding never costs a birr</p></div>
+        </div>
+        <div class="flex gap-3.5 items-start">
+          <span class="icon-tile !w-9 !h-9 !rounded-lg"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <div><h4 class="text-sm font-bold t-hd" data-i18n="std-2">Genuine parts only</h4><p class="text-xs t-mut mt-1" data-i18n="std-2s">No counterfeits, ever</p></div>
+        </div>
+        <div class="flex gap-3.5 items-start">
+          <span class="icon-tile !w-9 !h-9 !rounded-lg"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></span>
+          <div><h4 class="text-sm font-bold t-hd" data-i18n="std-3">Written quotes</h4><p class="text-xs t-mut mt-1" data-i18n="std-3s">The price you approve is the price you pay</p></div>
+        </div>
+        <div class="flex gap-3.5 items-start">
+          <span class="icon-tile !w-9 !h-9 !rounded-lg"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3 10-10"/></svg></span>
+          <div><h4 class="text-sm font-bold t-hd" data-i18n="std-4">90-day warranty</h4><p class="text-xs t-mut mt-1" data-i18n="std-4s">Every repair is guaranteed</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET ABEL ============ -->
+<section id="about" class="py-20 sm:py-24 px-4 sm:px-6 surface-2 border-y bd">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+    <div class="relative reveal reveal-scale">
+      <div class="rounded-3xl overflow-hidden border bd shadow-xl h-80 sm:h-[26rem] lg:h-[30rem]">
+        <img src="img/Able_suit.png"
+             onerror="handleImgError(this)" alt="Circuit board micro-soldering work"
+             width="800" height="600" loading="lazy" decoding="async"
+             class="w-full h-full object-cover zoom">
+      </div>
+      <div class="absolute -bottom-6 left-6 sm:left-8 surface border bd rounded-2xl px-5 py-4 shadow-xl flex items-center gap-4">
+        <span class="text-3xl font-display font-extrabold grad-text">3+</span>
+        <span class="text-xs font-bold t-hd leading-tight" data-i18n="abt-badge-s">years at the bench</span>
+      </div>
+    </div>
+
+    <div class="reveal reveal-right about-copy">
+      <div class="kicker" data-i18n="abt-kicker">The hands behind the lab</div>
+      <h2 class="h2 mt-3 mb-5" data-i18n="abt-title">Meet Abel</h2>
+      <p class="sub mb-7" data-i18n="abt-p1">Abel is the founder and hardware &amp; systems technician behind Abel Tech. For over 3 years he has combined electronics technician discipline with board-level micro-repair — solving problems other shops turn away.</p>
+
+      <ul class="grid sm:grid-cols-2 gap-3 mb-8">
+        <li class="flex items-start gap-2.5 text-[13px] t-tx font-medium"><svg class="w-4 h-4 mt-0.5 t-acc shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="sp-1">Epson L-series &amp; EcoTank printhead recovery</span></li>
+        <li class="flex items-start gap-2.5 text-[13px] t-tx font-medium"><svg class="w-4 h-4 mt-0.5 t-acc shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="sp-2">Canon imageRUNNER &amp; Ricoh drum overhauls</span></li>
+        <li class="flex items-start gap-2.5 text-[13px] t-tx font-medium"><svg class="w-4 h-4 mt-0.5 t-acc shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="sp-3">MacBook &amp; PC board-level micro-soldering</span></li>
+        <li class="flex items-start gap-2.5 text-[13px] t-tx font-medium"><svg class="w-4 h-4 mt-0.5 t-acc shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="sp-4">Office software &amp; Power Ge’ez deployments</span></li>
+      </ul>
+
+      <div class="flex flex-wrap items-center gap-5">
+        <button onclick="scrollToBooking('About')" class="btn btn-primary" data-i18n="btn-book">Book a Repair</button>
+        <div class="pl-5 border-l bd-2">
+          <div class="font-display font-bold text-lg t-hd" data-i18n="abt-sign">Abel</div>
+          <div class="text-[10.5px] font-bold uppercase tracking-wider t-mut" data-i18n="abt-role">Hardware &amp; Systems Technician</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guarantee -->
+  <div class="max-w-7xl mx-auto mt-16">
+    <div class="glow-card rounded-3xl p-7 sm:p-9 reveal">
+      <div class="grid md:grid-cols-3 gap-7 items-center relative z-10">
+        <div class="md:col-span-2">
+          <div class="kicker" data-i18n="gr-kicker">Abel’s service guarantee</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl t-hd mt-3 mb-2" data-i18n="gr-title">Transparent pricing. Free diagnosis. Genuine parts.</h3>
+          <p class="text-sm t-tx leading-relaxed" data-i18n="gr-desc">No work begins until you approve a written quote. On-site visits in Assosa, or instant troubleshooting over phone and Telegram, are always available.</p>
+        </div>
+        <div class="flex flex-col gap-2.5">
+          <button onclick="scrollToBooking('Guarantee')" class="btn btn-primary w-full" data-i18n="gr-book">Book a Repair</button>
+          <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="btn btn-tele w-full" data-i18n="gr-telegram">Ask on Telegram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="py-20 sm:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-wrap items-end justify-between gap-5 mb-12 reveal">
+      <div class="max-w-xl">
+        <div class="kicker" data-i18n="tst-kicker">Word of mouth</div>
+        <h2 class="h2 mt-3" data-i18n="tst-title">What Assosa says about Abel</h2>
+      </div>
+      <span class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border bd-2 text-xs font-bold t-tx surface">
+        <svg class="w-4 h-4 t-acc" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.6 1.4 6.5L12 16.9 6 20.1l1.4-6.5L2.5 9l6.6-.7L12 2z"/></svg>
+        <span data-i18n="tst-rating">4.9 average · 600+ serviced clients</span>
+      </span>
+    </div>
+    <div id="tstGrid" class="stagger-grid grid md:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section id="booking" class="py-20 sm:py-24 px-4 sm:px-6 surface-2 border-y bd">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mx-auto text-center mb-12 reveal">
+      <div class="kicker justify-center" data-i18n="book-kicker">Direct booking</div>
+      <h2 class="h2 mt-3 mb-3" data-i18n="book-title">Tell Abel what’s broken</h2>
+      <p class="sub" data-i18n="book-sub">Fill the form — you’ll get an instant ticket you can send to Abel in one tap via Telegram, WhatsApp or a call.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-6 items-stretch reveal">
+
+      <!-- Side panel -->
+      <aside class="order-2 lg:order-1 booking-side rounded-3xl p-7 sm:p-8 relative overflow-hidden lg:col-span-2">
+        <div class="relative z-10">
+          <h3 class="font-display font-bold text-lg" data-i18n="next-title">What happens next</h3>
+          <ol class="mt-5 space-y-4">
+            <li class="flex gap-3 items-start"><span class="side-num">1</span><p class="text-sm font-medium leading-snug" data-i18n="next-1">We confirm your free diagnosis slot</p></li>
+            <li class="flex gap-3 items-start"><span class="side-num">2</span><p class="text-sm font-medium leading-snug" data-i18n="next-2">You receive a written quote before any work</p></li>
+            <li class="flex gap-3 items-start"><span class="side-num">3</span><p class="text-sm font-medium leading-snug" data-i18n="next-3">You approve — the repair begins</p></li>
+          </ol>
+          <div class="my-7 h-px bg-black/15"></div>
+          <h3 class="font-display font-bold text-lg" data-i18n="talk-title">Prefer to talk?</h3>
+          <p class="text-sm font-medium opacity-80 mt-2 mb-4" data-i18n="talk-desc">Call or message — Abel personally answers during working hours.</p>
+          <div class="flex flex-col gap-2.5">
+            <a href="tel:0935144808" class="side-btn">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+              <span data-i18n="hero-btn-call">Call 0935 144 808</span>
+            </a>
+            <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="side-btn">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+              <span data-i18n="btn-tele">Telegram</span>
+            </a>
+          </div>
+          <p class="mt-5 flex items-center gap-2 text-xs font-semibold opacity-75">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span data-i18n="talk-hours">Mon–Sat 8:30–18:00 · Assosa</span>
+          </p>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <form id="repairBookingForm" onsubmit="handleBookingSubmit(event)" novalidate class="order-1 lg:order-2 lg:col-span-3 surface border bd rounded-3xl p-6 sm:p-8 space-y-7">
+        <fieldset>
+          <legend class="legend" data-i18n="book-what">1 · What needs fixing?</legend>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="printer" class="sr-only" checked>
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg>
+                <div><span class="pill-t" data-i18n="opt-printer">Printer</span><span class="pill-s" data-i18n="opt-printer-s">Epson · HP · Canon</span></div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="copier" class="sr-only">
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <div><span class="pill-t" data-i18n="opt-copier">Copier</span><span class="pill-s" data-i18n="opt-copier-s">Ricoh · Xerox · Canon</span></div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="computer" class="sr-only">
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>
+                <div><span class="pill-t" data-i18n="opt-computer">Computer</span><span class="pill-s" data-i18n="opt-computer-s">Laptop · Desktop · Mac</span></div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="projups" class="sr-only">
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="11" rx="2"/><circle cx="7.5" cy="10.5" r="2.5"/><path d="M13 8.5h5M13 12.5h3M9 20h6M12 16v4"/></svg>
+                <div><span class="pill-t" data-i18n="opt-projups">Projector / UPS</span><span class="pill-s" data-i18n="opt-projups-s">Epson · APC · Optoma</span></div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="software" class="sr-only">
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+                <div><span class="pill-t" data-i18n="opt-software">Software</span><span class="pill-s" data-i18n="opt-software-s">Windows · Office · Linux</span></div>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="deviceCategory" value="network" class="sr-only">
+              <div class="pill">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9a16 16 0 0 1 20 0M5 12.5a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01"/></svg>
+                <div><span class="pill-t" data-i18n="opt-network">Network</span><span class="pill-s" data-i18n="opt-network-s">Wi-Fi · Routers · LAN</span></div>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="legend" data-i18n="book-urgency">2 · How urgent is it?</legend>
+          <div class="grid grid-cols-3 gap-2.5">
+            <label class="cursor-pointer"><input type="radio" name="urgency" value="standard" class="sr-only" checked><div class="pill pill-mini"><span class="pill-t" data-i18n="urg-standard">Standard · 2–3 days</span></div></label>
+            <label class="cursor-pointer"><input type="radio" name="urgency" value="sameday" class="sr-only"><div class="pill pill-mini"><span class="pill-t" data-i18n="urg-sameday">Same-day</span></div></label>
+            <label class="cursor-pointer"><input type="radio" name="urgency" value="emergency" class="sr-only"><div class="pill pill-mini"><span class="pill-t" data-i18n="urg-emergency">Emergency</span></div></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="legend" data-i18n="f-legend">3 · Your details</legend>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="bkName" class="block text-xs font-bold t-hd mb-1.5" data-i18n="f-name">Your name</label>
+              <input id="bkName" type="text" class="input" data-i18n-ph="ph-name" placeholder="e.g. Mekdes Alemu" autocomplete="name">
+            </div>
+            <div>
+              <label for="bkPhone" class="block text-xs font-bold t-hd mb-1.5" data-i18n="f-phone">Phone number</label>
+              <input id="bkPhone" type="tel" class="input" data-i18n-ph="ph-phone" placeholder="09XX XXX XXX" autocomplete="tel">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="bkModel" class="block text-xs font-bold t-hd mb-1.5" data-i18n="f-model">Brand / model (optional)</label>
+            <input id="bkModel" type="text" class="input" data-i18n-ph="ph-model" placeholder="e.g. Epson L3250">
+          </div>
+          <div>
+            <label for="bkProblem" class="block text-xs font-bold t-hd mb-1.5" data-i18n="f-problem">Describe the problem</label>
+            <textarea id="bkProblem" rows="4" class="input resize-none" data-i18n-ph="ph-problem" placeholder="What is the device doing — or not doing?"></textarea>
+          </div>
+        </fieldset>
+
+        <div>
+          <button id="bkSubmit" type="submit" class="btn btn-primary w-full py-3.5 text-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+            <span data-i18n="book-submit">Get My Free Diagnosis</span>
+          </button>
+          <p class="mt-3 text-center text-[11px] font-semibold t-mut" data-i18n="book-note">Free · No obligation · Replies within working hours</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 sm:py-24 px-4 sm:px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10 reveal">
+      <div class="kicker justify-center" data-i18n="faq-kicker">Good to know</div>
+      <h2 class="h2 mt-3" data-i18n="faq-title">Frequently asked questions</h2>
+    </div>
+    <div id="faqList" class="stagger-grid surface border bd rounded-3xl px-6 sm:px-8"></div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section id="location" class="py-20 sm:py-24 px-4 sm:px-6 surface-2 border-y bd">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-xl mb-12 reveal">
+      <div class="kicker" data-i18n="loc-kicker">Find us</div>
+      <h2 class="h2 mt-3" data-i18n="loc-title">Inside Assosa, near Bambu Hotel</h2>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-6 items-stretch">
+      <div class="surface border bd rounded-3xl p-7 lg:col-span-2 card reveal flex flex-col">
+        <div class="flex items-start gap-3.5">
+          <span class="loc-ico"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <p class="font-bold text-sm t-hd" data-i18n="loc-address">Assosa, Benishangul-Gumuz, Ethiopia</p>
+            <p class="text-[13px] t-mut mt-1 leading-relaxed" data-i18n="loc-landmark">3-minute walk from Bambu Hotel, on the ground floor.</p>
+          </div>
+        </div>
+        <div class="my-6 h-px bd border-t"></div>
+        <h3 class="text-xs font-bold uppercase tracking-wider t-hd mb-4" data-i18n="loc-hours">Working hours</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 text-[13px] t-tx font-medium">
+            <svg class="w-4 h-4 t-acc shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span data-i18n="loc-days">Mon–Sat · 8:30 – 18:00</span>
+          </div>
+          <div class="flex items-center gap-3 text-[13px] t-tx font-medium">
+            <svg class="w-4 h-4 t-mut shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span data-i18n="loc-sun">Sunday · emergencies only</span>
+          </div>
+        </div>
+        <div class="mt-auto pt-7 flex flex-col sm:flex-row gap-2.5">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Assosa,Ethiopia" target="_blank" rel="noopener" class="btn btn-primary flex-1 text-sm" data-i18n="loc-directions">Get directions</a>
+          <a href="tel:0935144808" class="btn btn-secondary flex-1 text-sm" data-i18n="loc-call">Call the lab</a>
+        </div>
+      </div>
+      <div class="lg:col-span-3 rounded-3xl overflow-hidden border bd reveal reveal-right h-80 lg:h-auto min-h-[320px]">
+        <iframe title="Abel Tech location map — Assosa" src="https://maps.google.com/maps?q=Assosa%2C%20Ethiopia&z=14&output=embed" class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="py-20 sm:py-24 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="cta-panel rounded-[2rem] p-10 sm:p-16 text-center reveal">
+      <h2 class="relative z-10 font-display font-extrabold text-3xl sm:text-4xl md:text-[2.9rem] tracking-tight leading-tight max-w-3xl mx-auto" data-i18n="cta-title">Broken device? Let’s bring it back to life.</h2>
+      <p class="relative z-10 mt-4 text-sm sm:text-base font-medium opacity-85" data-i18n="cta-sub">Walk in, call, or book — diagnosis is always free.</p>
+      <div class="relative z-10 mt-9 flex flex-wrap justify-center gap-3">
+        <button onclick="scrollToBooking('CTA')" class="btn btn-dark" data-i18n="cta-book">Book a Repair</button>
+        <a href="tel:0935144808" class="btn btn-dark" data-i18n="hero-btn-call">Call 0935 144 808</a>
+        <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="btn btn-dark" data-i18n="btn-tele">Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t bd pt-14 pb-8 px-4 sm:px-6 reveal">
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <a href="#top" class="flex items-center gap-2.5 mb-4">
+        <div class="w-9 h-9 rounded-xl grid place-items-center font-display font-extrabold text-lg" style="background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#1c0d00">A</div>
+        <span class="font-display font-bold text-[15px] t-hd">Abel<span class="t-acc">Tech</span></span>
+      </a>
+      <p class="text-sm t-mut leading-relaxed max-w-xs" data-i18n="ft-tagline">Premium electronic repair &amp; systems lab — Assosa, Ethiopia.</p>
+      <div class="flex gap-2 mt-5">
+        <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" aria-label="Telegram" class="icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg></a>
+        <a href="https://wa.me/251935144808" target="_blank" rel="noopener" aria-label="WhatsApp" class="icon-btn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
+        <a href="tel:0935144808" aria-label="Call" class="icon-btn"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-wider t-hd mb-4" data-i18n="ft-links">Explore</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="nav-services">Services</a></li>
+        <li><a href="#devices" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="nav-devices">Devices</a></li>
+        <li><a href="#process" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="nav-process">Process</a></li>
+        <li><a href="#about" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="nav-about">Meet Abel</a></li>
+        <li><a href="#faq" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="nav-faq">FAQ</a></li>
+        <li><a href="#booking" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="btn-book">Book a Repair</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-wider t-hd mb-4" data-i18n="ft-services">Services</h3>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-1">Printer repair</a></li>
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-2">Copier service</a></li>
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-3">PC &amp; laptop</a></li>
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-4">Projector &amp; UPS</a></li>
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-5">Software installs</a></li>
+        <li><a href="#services" class="block py-1.5 t-tx hover:t-acc transition-colors" data-i18n="fs-6">Networks &amp; Wi-Fi</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-wider t-hd mb-4" data-i18n="ft-contact">Contact</h3>
+      <ul class="space-y-3 text-sm t-tx">
+        <li><a href="tel:0935144808" class="hover:t-acc transition-colors font-semibold">0935 144 808</a></li>
+        <li><a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="hover:t-acc transition-colors">t.me/Lifeofabel251</a></li>
+        <li class="t-mut" data-i18n="loc-address">Assosa, Benishangul-Gumuz, Ethiopia</li>
+        <li class="t-mut" data-i18n="talk-hours">Mon–Sat 8:30–18:00 · Assosa</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-10 pt-6 border-t bd flex flex-col sm:flex-row justify-between gap-2 text-xs t-mut">
+    <span>© 2025 Abel Tech · <span data-i18n="ft-rights">All rights reserved.</span></span>
+    <span data-i18n="ft-made">Built with care in Assosa</span>
+  </div>
+</footer>
+
+<div class="h-16 md:hidden"></div>
+
+<!-- Mobile action bar -->
+<div class="mobile-bar fixed inset-x-0 bottom-0 z-40 md:hidden">
+  <div class="grid grid-cols-3">
+    <a href="tel:0935144808" class="mb-action">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+      <span data-i18n="mb-call">Call</span>
+    </a>
+    <a href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="mb-action">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      <span data-i18n="mb-tele">Telegram</span>
+    </a>
+    <button onclick="scrollToBooking('Bar')" class="mb-action primary">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path stroke-linecap="round" d="M16 2v4M8 2v4M3 9h18"/></svg>
+      <span data-i18n="mb-book">Book</span>
+    </button>
+  </div>
+</div>
+
+<!-- Back to top -->
+<button id="toTop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" class="to-top">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- Toast -->
+<div id="toastWrap" class="toast-wrap" aria-live="polite"></div>
+
+<!-- Ticket modal -->
+<div id="ticketModal" class="fixed inset-0 z-[80] hidden" role="dialog" aria-modal="true" aria-labelledby="tmTitle">
+  <div class="absolute inset-0 modal-overlay" onclick="closeTicketModal()"></div>
+  <div class="relative h-full overflow-y-auto px-4 py-8 flex items-center justify-center">
+    <div class="modal-panel surface border bd rounded-3xl w-full max-w-md p-6 sm:p-7 shadow-2xl">
+      <div class="flex items-center gap-3.5 mb-5">
+        <span class="w-11 h-11 rounded-full grid place-items-center" style="background:var(--acc-soft);color:var(--acc-t)">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3 10-10"/></svg>
+        </span>
+        <h3 id="tmTitle" class="font-display font-bold text-lg t-hd" data-i18n="modal-title">Your ticket is ready</h3>
+      </div>
+      <div class="ticket-code mb-4" id="ticketCode">AT-0000</div>
+      <p class="text-[11px] font-bold uppercase tracking-wider t-mut mb-2" data-i18n="modal-sub">Send it to Abel in one tap:</p>
+      <pre id="ticketSummary" class="text-[12.5px] leading-relaxed t-tx whitespace-pre-wrap rounded-xl border bd p-4 mb-5" style="background:var(--acc-soft);font-family:inherit"></pre>
+      <div class="grid grid-cols-2 gap-2.5 mb-2.5">
+        <a id="telegramLink" href="https://t.me/Lifeofabel251" target="_blank" rel="noopener" class="btn btn-tele py-3 text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2 11 13M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <span data-i18n="btn-tele">Telegram</span>
+        </a>
+        <a id="waLink" href="#" target="_blank" rel="noopener" class="btn btn-wa py-3 text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          <span data-i18n="modal-whatsapp">WhatsApp</span>
+        </a>
+      </div>
+      <a href="tel:0935144808" class="btn btn-secondary w-full py-3 text-sm mb-2.5">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+        <span data-i18n="modal-call">Call 0935 144 808</span>
+      </a>
+      <button onclick="copyTicket()" class="btn btn-ghost w-full py-2.5 text-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span data-i18n="modal-copy">Copy ticket</span>
+      </button>
+      <button onclick="closeTicketModal()" class="mt-3 w-full text-xs font-bold t-mut hover:t-acc transition-colors py-2" data-i18n="modal-close">Close</button>
+      <p class="mt-4 pt-4 border-t bd text-[11px] leading-relaxed t-mut text-center" data-i18n="modal-note">This form stores nothing online — deliver your ticket with one of the options above.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const SV = (p) => `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const SVS = (p) => `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const STAR = '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.6.7-4.9 4.6 1.4 6.5L12 16.9 6 20.1l1.4-6.5L2.5 9l6.6-.7L12 2z"/></svg>';
+
+const I18N = {
+en:{
+ 'brand-sub':'Electronics Lab · Assosa',
+ 'nav-services':'Services','nav-devices':'Devices','nav-process':'Process','nav-about':'Meet Abel','nav-faq':'FAQ','nav-location':'Location',
+ 'btn-book':'Book a Repair','btn-tele':'Telegram',
+ 'hero-badge':'Premium Electronics Repair Lab · Assosa',
+ 'hero-title-a':'Precision repair for','hero-title-b':'the machines your work runs on.',
+ 'hero-desc':'From jammed printheads and copier rebuilds to board-level micro-soldering, projector optics and UPS circuits — master technician Abel brings lab-grade care to every machine in Assosa.',
+ 'hero-btn-book':'Book a Repair','hero-btn-call':'Call 0935 144 808',
+ 'stat-years':'Years at the bench','stat-devices':'Devices revived','stat-diag':'Diagnosis, always free',
+ 'hero-photo-badge':'Assosa · Bambu Hotel area','scroll-hint':'Scroll',
+ 'marquee-label':'Trusted with the brands Assosa runs on',
+ 'srv-kicker':'What we do','srv-title':'Repair services built on mastery','srv-sub':'From quick fixes to full rebuilds — every job handled with the same precision, honesty and genuine parts.','srv-book':'Book this service',
+ 'dev-kicker':'The device lab','dev-title':'What we diagnose and repair','dev-sub':'Printers, copiers, computers, projectors, power backup, software and networks — one lab, every fix.','dev-book':'Book this device','dev-empty':'No devices match this filter — try “All”.',
+ 'filter-all':'All','filter-printers':'Printers','filter-copiers':'Copiers','filter-scanners':'Scanners','filter-laptops':'Laptops','filter-desktops':'Desktops','filter-projectors':'Projectors','filter-ups':'UPS & Power','filter-software':'Software','filter-network':'Network',
+ 'proc-kicker':'How it works','proc-title':'Four honest steps, zero surprises','proc-sub':'You always know what’s happening to your device — and what it costs — before anything is touched.',
+ 'std-title':'The Abel Tech standard','std-1':'Free diagnosis','std-1s':'Fault-finding never costs a birr','std-2':'Genuine parts only','std-2s':'No counterfeits, ever','std-3':'Written quotes','std-3s':'The price you approve is the price you pay','std-4':'90-day warranty','std-4s':'Every repair is guaranteed',
+ 'abt-kicker':'The hands behind the lab','abt-title':'Meet Abel',
+ 'abt-p1':'Abel is the founder and hardware & systems technician behind Abel Tech. For over 3 years he has combined electronics technician discipline with board-level micro-repair — solving problems other shops turn away.',
+ 'abt-p2':'',
+ 'abt-badge-s':'years at the bench','abt-sign':'Abel','abt-role':'Hardware & Systems Technician',
+ 'sp-1':'Epson L-series & EcoTank printhead recovery','sp-2':'Canon imageRUNNER & Ricoh drum overhauls','sp-3':'MacBook & PC board-level micro-soldering','sp-4':'Office software & Power Ge’ez deployments',
+ 'gr-kicker':'Abel’s service guarantee','gr-title':'Transparent pricing. Free diagnosis. Genuine parts.','gr-desc':'No work begins until you approve a written quote. On-site visits in Assosa, or instant troubleshooting over phone and Telegram, are always available.','gr-book':'Book a Repair','gr-telegram':'Ask on Telegram',
+ 'tst-kicker':'Word of mouth','tst-title':'What Assosa says about Abel','tst-rating':'4.9 average · 600+ serviced clients',
+ 'book-kicker':'Direct booking','book-title':'Tell Abel what’s broken','book-sub':'Fill the form — you’ll get an instant ticket you can send to Abel in one tap via Telegram, WhatsApp or a call.',
+ 'book-what':'1 · What needs fixing?',
+ 'opt-printer':'Printer','opt-printer-s':'Epson · HP · Canon','opt-copier':'Copier','opt-copier-s':'Ricoh · Xerox · Canon','opt-computer':'Computer','opt-computer-s':'Laptop · Desktop · Mac','opt-projups':'Projector / UPS','opt-projups-s':'Epson · APC · Optoma','opt-software':'Software','opt-software-s':'Windows · Office · Linux','opt-network':'Network','opt-network-s':'Wi-Fi · Routers · LAN',
+ 'book-urgency':'2 · How urgent is it?','urg-standard':'Standard · 2–3 days','urg-sameday':'Same-day','urg-emergency':'Emergency',
+ 'f-legend':'3 · Your details','f-name':'Your name','f-phone':'Phone number','f-model':'Brand / model (optional)','f-problem':'Describe the problem',
+ 'ph-name':'e.g. Mekdes Alemu','ph-phone':'09XX XXX XXX','ph-model':'e.g. Epson L3250','ph-problem':'What is the device doing — or not doing?',
+ 'book-submit':'Get My Free Diagnosis','book-loading':'Preparing your ticket…','book-note':'Free · No obligation · Replies within working hours',
+ 'next-title':'What happens next','next-1':'We confirm your free diagnosis slot','next-2':'You receive a written quote before any work','next-3':'You approve — the repair begins',
+ 'talk-title':'Prefer to talk?','talk-desc':'Call or message — Abel personally answers during working hours.','talk-hours':'Mon–Sat 8:30–18:00 · Assosa',
+ 'modal-title':'Your ticket is ready','modal-sub':'Send it to Abel in one tap:','modal-whatsapp':'WhatsApp','modal-call':'Call 0935 144 808','modal-copy':'Copy ticket','modal-close':'Close','modal-note':'This form stores nothing online — deliver your ticket with one of the options above.',
+ 'tk-head':'Abel Tech — Repair Ticket','tk-device':'Device','tk-model':'Model','tk-urgency':'Urgency','tk-name':'Name','tk-phone':'Phone','tk-problem':'Problem','tk-none':'—',
+ 'faq-kicker':'Good to know','faq-title':'Frequently asked questions',
+ 'loc-kicker':'Find us','loc-title':'Inside Assosa, near Bambu Hotel','loc-address':'Assosa, Benishangul-Gumuz, Ethiopia','loc-landmark':'3-minute walk from Bambu Hotel, on the ground floor.',
+ 'loc-hours':'Working hours','loc-days':'Mon–Sat · 8:30 – 18:00','loc-sun':'Sunday · emergencies only','loc-directions':'Get directions','loc-call':'Call the lab',
+ 'cta-title':'Broken device? Let’s bring it back to life.','cta-sub':'Walk in, call, or book — diagnosis is always free.','cta-book':'Book a Repair',
+ 'ft-tagline':'Premium electronic repair & systems lab — Assosa, Ethiopia.','ft-links':'Explore','ft-services':'Services','ft-contact':'Contact','ft-rights':'All rights reserved.','ft-made':'Built with care in Assosa',
+ 'fs-1':'Printer repair','fs-2':'Copier service','fs-3':'PC & laptop','fs-4':'Projector & UPS','fs-5':'Software installs','fs-6':'Networks & Wi-Fi',
+ 'mb-call':'Call','mb-tele':'Telegram','mb-book':'Book',
+ 'toast-prefilled':'Form pre-filled — add your details and send.','toast-copied':'Ticket copied to clipboard.','toast-error':'Please fill your name, phone and the problem.','toast-invalid-phone':'Please enter a valid phone number.'
+},
+am:{
+ 'brand-sub':'የኤሌክትሮኒክስ ቤተ ሙከራ · አሶሳ',
+ 'nav-services':'አገልግሎቶች','nav-devices':'መሣሪያዎች','nav-process':'የሥራ ሂደት','nav-about':'ስለ አብል','nav-faq':'ጥያቄዎች','nav-location':'አካባቢ',
+ 'btn-book':'ቀጠሮ ይያዙ','btn-tele':'ቴሌግራም',
+ 'hero-badge':'የላቀ የኤሌክትሮኒክስ ጥገና ቤተ ሙከራ · አሶሳ',
+ 'hero-title-a':'ለሥራዎ የሚያስፈልጉት','hero-title-b':'ማሽናሮች ላይ ትክክለኛ ጥገና።',
+ 'hero-desc':'ከተቆለሉ የማተሚያ ራሶችና ከቅጂ ማሽን ግንባታ እስከ ቦርድ-ደረጃ ጥገና፣ የፕሮጀክተር መስተዋትና የUPS ዑደቶች — ቴክኒሻን አብል በአሶሳ ለእያንዳንዱ መሣሪያ የቤተ ሙከራ ደረጃ እንክብካቤ ይሰጣል።',
+ 'hero-btn-book':'ቀጠሮ ይያዙ','hero-btn-call':'ይደውሉ 0935 144 808',
+ 'stat-years':'የሥራ አመታት','stat-devices':'የተጠገኑ መሣሪያዎች','stat-diag':'ቅኝት — ሁልጊዜ ነፃ',
+ 'hero-photo-badge':'አሶሳ · ባምቡ ሆቴል አቅራቢያ','scroll-hint':'ወደ ታች',
+ 'marquee-label':'የምንጠገናቸው ዋና ብራንዶች',
+ 'srv-kicker':'የምንሰጣቸው አገልግሎቶች','srv-title':'በሙያ ልምድ ላይ የተመሰረቱ የጥገና አገልግሎቶች','srv-sub':'ከቀላል ጥገና እስከ ሙሉ ግንባታ — ሁሉም ሥራ በተመሳሳይ ትክክለኛነት፣ ታማኝነት እና የተሟላ አካላት ይሰራል።','srv-book':'ይያዙ',
+ 'dev-kicker':'የመሣሪያ ቤተ ሙከራ','dev-title':'የምንፈትሻቸውና የምንጠገናቸው','dev-sub':'ማተሚያዎች፣ የቅጂ ማሽኖች፣ ኮምፒውተሮች፣ ፕሮጀክተሮች፣ የኃይል መጠባበቂያ፣ ሶፍትዌርና ኔትወርክ — አንድ ቤተ ሙከራ፣ ሁሉም መፍትሔ።','dev-book':'ቀጠሮ ይያዙ','dev-empty':'በዚህ ማጣሪያ ምንም አልተገኘም — «ሁሉም»ን ይሞክሩ።',
+ 'filter-all':'ሁሉም','filter-printers':'ማተሚያዎች','filter-copiers':'የቅጂ ማሽኖች','filter-scanners':'ስካነሮች','filter-laptops':'ላፕቶፕ','filter-desktops':'ዴስክቶፕ','filter-projectors':'ፕሮጀክተሮች','filter-ups':'UPS','filter-software':'ሶፍትዌር','filter-network':'ኔትወርክ',
+ 'proc-kicker':'እንዴት እንሰራል','proc-title':'አራት ግልጽ ደረጃዎች — ያለ ድንገተኛ ነገር','proc-sub':'መሣሪያዎ ምን እንደሚደረገው እና ምን መክፈል እንደሚያስፈልግ ሁልጊዜ ያውቃሉ — ከመነካቱ በፊት።',
+ 'std-title':'የአብል ቴክ ደረጃ','std-1':'ነፃ ቅኝት','std-1s':'ችግር መፈለግ አንድም ብር አይከፈልም','std-2':'የተሟላ አካላት ብቻ','std-2s':'ተዋሽ በጭራሽ አይገባም','std-3':'የጽሁፍ ዋጋ','std-3s':'ያጸደቁት ዋጋ የሚከፈሉት ዋጋ ነው','std-4':'የ90 ቀን ዋስትና','std-4s':'እያንዳንዱ ጥገና ዋስተኛ ነው',
+ 'abt-kicker':'የቤተ ሙከራው መስራች','abt-title':'አብልን ያውቁት',
+ 'abt-p1':'አብል የአብል ቴክ መስራች፣ ዋና ቴክኒሻን እና ዋና የሃርድዌርና ሥርዓት ምህንድስና ነው። ለ8 ዓመታት በላይ የኤሌክትሮኒክስ ምህንድስና ሥልጠናንና የቦርድ-ደረጃ ጥገና ክህሎትን አጣምሯል — ሌሎች ሱቖች የሚመልሷቸውን ችግሮች ይፈታል።',
+ 'abt-p2':'በአሶሳ ያለው ቤተ ሙከራው የመንግሥት ቢሮዎችን፣ ትምህርት ቤቶችን፣ ድርጅቶችንና ቤተሰቦችን በተሟላ ሁኔታ እንዲሰሩ ያደርጋል — በአንድ በእጅ የተጠገነ ማሽና ሂደት።',
+ 'abt-badge-s':'ዓመታት በሙያው','abt-sign':'አብል','abt-role':'ዋና የሃርድዌርና ሥርዓት ምህንድስና',
+ 'sp-1':'የEpson L-ተከታትና EcoTank ራስ ማገገም','sp-2':'የCanon imageRUNNERና Ricoh ድራም ግንባታ','sp-3':'የMacBookና የPC ቦርድ-ደረጃ ሶልደር','sp-4':'የቢሮ ሶፍትዌርና የፓወር ግዕዝ ተከላ',
+ 'gr-kicker':'የአብል የአገልግሎት ቃል ኪዳን','gr-title':'ግልጽ ዋጋ። ነፃ ቅኝት። የተሟላ አካላት።','gr-desc':'እርስዎ የጽሁፍ ዋጋውን እስኪያጸድቁ ድረስ ምንም ሥራ አይጀምርም። በአሶሳ ወደ ቦታዎ መጥተን ማገልገል ወይም በስልክና በቴሌግራም አስቸኳይ መርዳት እንችላለን።','gr-book':'ቀጠሮ ይያዙ','gr-telegram':'በቴሌግራም ይጠይቁ',
+ 'tst-kicker':'በአፍ ቃል','tst-title':'አሶሳ ስለ አብል ምን ይላል?','tst-rating':'4.9 አማካይ · 600+ የተገለገሉ ደንበኞች',
+ 'book-kicker':'ቀጠሮ ማስያዝ','book-title':'የተበላሸውን ይንገሩን','book-sub':'ቅጹን ይሙሉ — የቲኬት ቁጥር ወዲያውኑ ይወጣል፤ ከዚያ በቴሌግራም፣ በዋትስአፕ ወይም በስልክ በአንድ ጫን ወደ አብል ይላኩት።',
+ 'book-what':'1 · ምን መጠገን አለበት?',
+ 'opt-printer':'ማተሚያ','opt-printer-s':'Epson · HP · Canon','opt-copier':'የቅጂ ማሽን','opt-copier-s':'Ricoh · Xerox · Canon','opt-computer':'ኮምፒውተር','opt-computer-s':'ላፕቶፕ · ዴስክቶፕ · ማክ','opt-projups':'ፕሮጀክተር / UPS','opt-projups-s':'Epson · APC · Optoma','opt-software':'ሶፍትዌር','opt-software-s':'Windows · Office · Linux','opt-network':'ኔትወርክ','opt-network-s':'ዋይፋይ · ራውተር · LAN',
+ 'book-urgency':'2 · አስቸኳይነቱ ስንት ነው?','urg-standard':'መደበኛ · 2–3 ቀናት','urg-sameday':'በዚያው ቀን','urg-emergency':'አስቸኳይ',
+ 'f-legend':'3 · የእርስዎ ዝርዝሮች','f-name':'የእርስዎ ስም','f-phone':'የስልክ ቁጥር','f-model':'ማርክ / ሞዴል (አማራጭ)','f-problem':'ችግሩን ይግለጹ',
+ 'ph-name':'ለምሳሌ፡ መቅደስ ዓለሙ','ph-phone':'09XX XXX XXX','ph-model':'ለምሳሌ፡ Epson L3250','ph-problem':'መሣሪያው ምን ይሠራል? ወይስ ምን አይሠራም?',
+ 'book-submit':'ነፃ ቅኝቴን ያግኙ','book-loading':'ቲኬትዎን በማዘጋጀት ላይ…','book-note':'ነፃ · ምንም ግዴታ የለም · በሥራ ሰዓት ውስጥ እንመልሳለን',
+ 'next-title':'ቀጥሎ ምን ይከሰታል?','next-1':'የነፃ ቅኝት ቀጠሮዎን እናረጋግጣለን','next-2':'ማንኛውም ሥራ ከመጀመሩ በፊት የጽሁፍ ዋጋ ያገኛሉ','next-3':'ሲያጸድቁ — ጥገናው ይጀምራል',
+ 'talk-title':'መናገር የሚመርጡ ከሆነ?','talk-desc':'ይደውሉ ወይም መልእክት ይላኩ — አብል ራሱ በሥራ ሰዓት ይመልሳል።','talk-hours':'ሰኞ–ቅዳሜ 8:30–18:00 · አሶሳ',
+ 'modal-title':'ቲኬትዎ ተዘጋጅቷል','modal-sub':'በአንድ ጫን ወደ አብል ይላኩት፡','modal-whatsapp':'ዋትስአፕ','modal-call':'ይደውሉ 0935 144 808','modal-copy':'ቲኬቱን ቅዳ','modal-close':'ዝጋ','modal-note':'ቅጹ በመስመር ላይ ምንም አያከማችም — ቲኬትዎን በላይኛው አማራጮች አንዱ ይላኩ።',
+ 'tk-head':'አብል ቴክ — የጥገና ቲኬት','tk-device':'መሣሪያ','tk-model':'ሞዴል','tk-urgency':'አስቸኳይነት','tk-name':'ስም','tk-phone':'ስልክ','tk-problem':'ችግር','tk-none':'—',
+ 'faq-kicker':'ለመወቀር ጠቃሚ','faq-title':'በተደጋጋሚ የሚጠየቁ ጥያቄዎች',
+ 'loc-kicker':'የምንገኛበት','loc-title':'በአሶሳ ውስጥ፣ ከባምቡ ሆቴል አቅራቢያ','loc-address':'አሶሳ፣ ቤንችንጉል-ጉሙዝ፣ ኢትዮጵያ','loc-landmark':'ከባምቡ ሆቴል በ3 ደቂቃ እግር ጉዞ፣ በመሬት ወለል ላይ።',
+ 'loc-hours':'የሥራ ሰዓታት','loc-days':'ሰኞ–ቅዳሜ · 8:30 – 18:00','loc-sun':'እሁድ · ድንገተኛ ብቻ','loc-directions':'አቅጣጫ ይክፈቱ','loc-call':'ወደ ሙከራው ይደውሉ',
+ 'cta-title':'የተበላሸ መሣሪያ አለዎት? እንደገና እናስነሳዋለን።','cta-sub':'ግቡ፣ ይደውሉ ወይም ቀጠሮ ይያዙ — ቅኝቱ ሁልጊዜ ነፃ ነው።','cta-book':'ቀጠሮ ይያዙ',
+ 'ft-tagline':'የላቀ የኤሌክትሮኒክስ ጥገና እና የሥርዓት ቤተ ሙከራ — አሶሳ፣ ኢትዮጵያ።','ft-links':'አስፈላጊ አገናኞች','ft-services':'አገልግሎቶች','ft-contact':'አግኙን','ft-rights':'መብቱ በሕግ የተጠበቀ ነው።','ft-made':'በአሶሳ በፍቅር የተሠራ',
+ 'fs-1':'የማተሚያ ጥገና','fs-2':'የቅጂ ማሽን','fs-3':'ኮምፒውተር','fs-4':'ፕሮጀክተር እና UPS','fs-5':'የሶፍትዌር ተከላ','fs-6':'ኔትወርክ እና ዋይፋይ',
+ 'mb-call':'ይደውሉ','mb-tele':'ቴሌግራም','mb-book':'ቀጠሮ',
+ 'toast-prefilled':'ቅጹ ተሞልቷል — ዝርዝሮችዎን ይጨምሩ እና ይላኩ።','toast-copied':'ቲኬቱ ተቀድቷል።','toast-error':'እባክዎ ስምዎን፣ ስልክ ቁጥርዎን እና ችግሩን ይሙሉ።','toast-invalid-phone':'እባክዎ ትክክለኛ የስልክ ቁጥር ያስገቡ።'
+}};
+
+const ARROW = SVS('<path d="M5 12h14M12 5l7 7-7 7"/>');
+
+const SERVICES = [
+ {icon:'printer',pre:'printer',en:{t:'Printer Repair',d:'Paper jams, clogged printheads, waste-ink resets, rollers and gears — Epson, HP, Canon.'},am:{t:'የማተሚያ ጥገና',d:'የወረቀት መቆለል፣ የተቆለሉ የማተሚያ ራሶች፣ የጉድብ ሚን ማጽዳት፣ ሮለርና ጊር መቀየር — Epson፣ HP፣ Canon።'}},
+ {icon:'copier',pre:'copier',en:{t:'Copier Service',d:'Drum overhauls, optics cleaning, toner systems and network scanning — Ricoh, Canon, Xerox.'},am:{t:'የቅጂ ማሽን አገልግሎት',d:'የድራም እንደገና ግንባታ፣ የመስተዋት ማጽዳት፣ የቶነር ሥርዓትና የኔትወርክ ስካን — Ricoh፣ Canon፣ Xerox።'}},
+ {icon:'laptop',pre:'computer',en:{t:'PC & Laptop Repair',d:'Screens, keyboards, hinges, batteries, board-level micro-soldering, SSD & RAM upgrades.'},am:{t:'የኮምፒውተር ጥገና',d:'ስክሪን፣ ኪቦርድ፣ hinge፣ ባትሪ፣ ቦርድ-ደረጃ ሶልደር፣ SSDና RAM ማሻሻያ።'}},
+ {icon:'projector',pre:'projups',en:{t:'Projector & UPS',d:'Lamp replacement, color-wheel cleaning, HDMI boards, UPS batteries and inverter circuits.'},am:{t:'ፕሮጀክተር እና UPS',d:'ላምፕ መቀየር፣ የቀለም ዊል ማጽዳት፣ የHDMI ቦርዶች፣ የUPS ባትሪና ኢንቨርተር ዑደቶች።'}},
+ {icon:'code',pre:'software',en:{t:'Software & OS',d:'Windows & Linux installs, MS Office, Power Ge’ez Amharic keyboard, drivers, virus removal.'},am:{t:'ሶፍትዌር እና ሥርዓት',d:'የWindowsና Linux ጭነት፣ MS Office፣ የፓወር ግዕዝ ቁልፍ ሰሌዳ፣ ድራይቨር፣ ቫይረስ ማጥፋት።'}},
+ {icon:'wifi',pre:'network',en:{t:'Networks & Wi-Fi',d:'Office Wi-Fi, LAN cabling, shared printers, router setup and firewall protection.'},am:{t:'ኔትወርክ እና ዋይፋይ',d:'የቢሮ ዋይፋይ፣ የLAN ገመድ፣ የጋራ ማተሚያ፣ የራውተር ተከላና የፋየርዎል ጥበቃ።'}}
+];
+const SERVICE_ICONS = {
+ printer:SV('<path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/>'),
+ copier:SV('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'),
+ laptop:SV('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>'),
+ projector:SV('<rect x="2" y="5" width="20" height="11" rx="2"/><circle cx="7.5" cy="10.5" r="2.5"/><path d="M13 8.5h5M13 12.5h3"/><path d="M9 20h6M12 16v4"/>'),
+ code:SV('<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>'),
+ wifi:SV('<path d="M2 9a16 16 0 0 1 20 0M5 12.5a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01"/>')
+};
+
+const DEVICES = [
+ {type:'printer',pre:'printer',img:'img/ink-tank-printer.jpg',en:{tag:'Printer',t:'Ink Tank & LaserJet Printers',b:'Epson · HP · Canon',d:'Paper jam clearing, printhead unclogging, waste-ink pad resets, gear restoration and ink refills.'},am:{tag:'ማተሚያ',t:'ኢንክ ታንክ እና ላዘር ማተሚያዎች',b:'Epson · HP · Canon',d:'የወረቀት መቆለል መፍትሔ፣ የራስ መፍታት፣ የጉድብ ሚን ማጽዳት፣ የጊር ማስተካከል እና ሚን መሙላት።'}},
+ {type:'scanner',pre:'copier',img:'img/Canono Scanner.png',en:{tag:'Scanner',t:'Document & Office Scanners',b:'Canon · Epson · Brother',d:'Scanner cleaning, paper-feed repairs, scan-quality fixes, driver setup and network scanning.'},am:{tag:'ስካነር',t:'የሰነድ እና የቢሮ ስካነሮች',b:'Canon · Epson · Brother',d:'የስካነር ማጽዳት፣ የወረቀት መግቢያ ጥገና፣ የስካን ጥራት ማስተካከል፣ ድራይቨር መጫን እና የኔትወርክ ስካን።'}},
+ {type:'laptop',pre:'computer',img:'img/laptop-macbook.jpg',en:{tag:'Laptop & Mac',t:'Laptops & MacBooks',b:'Dell · HP · Lenovo · Apple',d:'Screen replacement, hinge rebuilds, battery renewals, keyboard fixes and board-level micro-soldering.'},am:{tag:'ላፕቶፕ',t:'ላፕቶፖች እና ማክቡክ',b:'Dell · HP · Lenovo · Apple',d:'የስክሪን መቀየር፣ የhinge ጥገና፣ ባትሪ መቀየር፣ ኪቦርድ ማስተካከል እና ቦርድ-ደረጃ ሶልደር።'}},
+ {type:'desktop',pre:'computer',img:'img/desktop-workstation.jpg',en:{tag:'Desktop',t:'Desktop Towers & Workstations',b:'Office · Gaming · Render',d:'Power supply troubleshooting, GPU diagnostics, SSD upgrades, thermal cooling and part replacement.'},am:{tag:'ዴስክቶፕ',t:'ዴስክቶፕ ኮምፒውተሮች',b:'ቢሮ · ጌም · Render',d:'የኃይል አቅርቦት ችግር መፍትሔ፣ የGPU ቅኝት፣ SSD ማሻሻያ፣ የሙቀት ማቀዝቀዣ እና የክፍል መቀየር።'}},
+ {type:'projector',pre:'projups',img:'img/office-projector.jpg',en:{tag:'Projector',t:'Office & Hall Projectors',b:'Epson · Optoma · BenQ',d:'Lamp replacement, color-wheel cleaning, HDMI/VGA board repair and overheating shutdown fixes.'},am:{tag:'ፕሮጀክተር',t:'የቢሮ እና አዳራሽ ፕሮጀክተሮች',b:'Epson · Optoma · BenQ',d:'ላምፕ መቀየር፣ የቀለም ዊል ማጽዳት፣ የHDMI/VGA ቦርድ ጥገና እና የሙቀት ችግር መፍትሔ።'}},
+ {type:'ups',pre:'projups',img:'img/ups-power-backup.jpg',en:{tag:'UPS & Power',t:'UPS & Power Backup',b:'APC · Mercury · KStar',d:'Battery testing and replacement, inverter board repair and charge-voltage calibration.'},am:{tag:'UPS',t:'UPS እና የኃይል መጠባበቂያ',b:'APC · Mercury · KStar',d:'የባትሪ ፍተሻ እና መቀየር፣ የኢንቨርተር ቦርድ ጥገና እና የቮልቴጅ ማስተካከል።'}},
+ {type:'software',pre:'software',img:'img/software-development.jpg',en:{tag:'Software',t:'Software & Operating Systems',b:'Windows · Office · Linux',d:'Clean OS installs, Power Ge’ez Amharic keyboard, Office suites, printer drivers and virus purging.'},am:{tag:'ሶፍትዌር',t:'ሶፍትዌር እና ሥርዓቶች',b:'Windows · Office · Linux',d:'ንጹህ OS ጭነት፣ የፓወር ግዕዝ ቁልፍ ሰሌዳ፣ Office ጥቅሎች፣ ድራይቨሮች እና ቫይረስ ማጥፋት።'}},
+ {type:'network',pre:'network',img:'img/office-network.jpg',en:{tag:'Network',t:'Routers & Office Wi-Fi',b:'TP-Link · Cisco · MikroTik',d:'Shared printer setup, Wi-Fi access-point extension, LAN crimping and firewall protection.'},am:{tag:'ኔትወርክ',t:'ራውተሮች እና የቢሮ ዋይፋይ',b:'TP-Link · Cisco · MikroTik',d:'የጋራ ማተሚያ ተከላ፣ የዋይፋይ ማስፋት፣ የLAN ግሪምፕ እና የፋየርዎል ጥበቃ።'}}
+];
+
+const STEPS = [
+ {en:{t:'Free diagnosis',d:'Bring the device in — or describe the fault by phone. We inspect and report the real cause, free of charge.'},am:{t:'ነፃ ቅኝት',d:'መሣሪያዎን አምጡ ወይም ችግሩን በስልክ ይግለጹ። እውነተኛውን ምክንያት በነፃ እንፈትሻለን።'}},
+ {en:{t:'Transparent quote',d:'A written price before any work begins. What you approve is exactly what you pay.'},am:{t:'ግልጽ ዋጋ',d:'ማንኛውም ሥራ ከመጀመሩ በፊት የጽሁፍ ዋጋ። ያጸደቁት በትክክል የሚከፈሉት ነው።'}},
+ {en:{t:'Expert repair',d:'Genuine parts, professional tools and board-level skill — the fix is done right, not patched.'},am:{t:'ባለሙያ ጥገና',d:'የተሟላ አካላት፣ ሙያዊ መሣሪያዎችና ቦርድ-ደረጃ ክህሎት — ጥገናው በትክክል ይሠራል፣ አይሸፈንም።'}},
+ {en:{t:'Test & deliver',d:'Every device is stress-tested before it leaves the lab — and covered by a 90-day warranty.'},am:{t:'ፍተሻና ማስረከብ',d:'ከቤተ ሙከራው ከመውጣቱ በፊት እያንዳንዱ መሣሪያ ይፈተናል — እና በ90 ቀን ዋስትና ይታጠቃል።'}}
+];
+
+const TESTIMONIALS = [
+ {en:{q:'Our office copier was dead for two weeks. Abel rebuilt the drum unit in two days — it now prints better than new.',n:'Mekdes A.',r:'Assosa University'},am:{q:'የቢሮያችን የቅጂ ማሽን ለሁለት ሳምንት አልሰራም ነበር። አብል ድራሙን በሁለት ቀን እንደገና ገነባ — አሁን ከአዲስ የተሻለ ይፈጥራል።',n:'መቅደስ አ.',r:'የአሶሳ ዩኒቨርሲቲ'}},
+ {en:{q:'My MacBook logic board died and two shops said it was finished. Abel fixed it at board level — honest price, honest man.',n:'Bereket T.',r:'Business owner, Assosa'},am:{q:'የማክቡክ ቦርዱ ሲያቆም ሁለት ሱፖች እንደተጨረሰ አሉኝ። አብል በቦርድ ደረጃ አስተካክሎልኝ — ታማኝ ዋጋ፣ ታማኝ ሰው።',n:'በረከት ተ.',r:'ነጋዴ፣ አሶሳ'}},
+ {en:{q:'Free diagnosis, written quote, and my UPS was fixed the same day. This is how service should be done.',n:'Selamawit G.',r:'Pharmacy manager'},am:{q:'ነፃ ቅኝት፣ የጽሁፍ ዋጋ፣ እና UPS-ዬ በዚያው ቀን ተስተካክሏል። አገልግሎት ይህ ላይ መደረስ አለበት።',n:'ሰላማዊት ግ.',r:'የፋርማሲ አስተዳዳሪ'}}
+];
+
+const FAQS = [
+ {en:{q:'Is the diagnosis really free?',a:'Yes — always. Inspection and fault-finding cost nothing, whether you bring the device in or describe the problem by phone. You only pay once you approve a repair.'},am:{q:'ቅኝት በእውነት ነፃ ነው?',a:'አዎ — ሁልጊዜ። ፍተሻውና የችግር መለየት ምንም አይከፈልም፤ መሣሪያዎን አምጠው ወይም በስልክ ይግለጹ። ጥገናውን ከያጸደቁ በኋላ ብቻ ይከፈላል።'}},
+ {en:{q:'How long do repairs take?',a:'Software and simple fixes are usually done the same day. Hardware repairs typically take 1–3 days; complex board-level jobs may need a few more. You always get a clear timeline upfront.'},am:{q:'ጥገናው ምን ያህል ጊዜ ይወስዳል?',a:'የሶፍትዌርና ቀላል ጥገና በተለምዶ በዚያው ቀን ይሠራል። የሃርድዌር ጥገና 1–3 ቀናት ይወስዳል፤ ውስብስብ የቦርድ-ደረጃ ሥራዎች ትንሽ ተጨማሪ ሊያስፈልጋቸው ይችላል። አስቀድሞ ግልጽ የጊዜ ግምት ያገኛሉ።'}},
+ {en:{q:'Do you use genuine spare parts?',a:'Yes. We fit original or certified parts and tell you exactly which part is going into your device. If a genuine part is unavailable, we say so before proposing an alternative.'},am:{q:'የተሟላ አካላት ይጠቀማሉ?',a:'አዎ። ወጥ ወይም የተረጋገጡ አካላትን እንጭናለን እና የትኛው አካል ወደ መሣሪያዎ እንደሚገባ በትክክል እንነግርዎታለን። ወጥ አካል ከሌለ አማራጭ ከመምረጥ በፊት እንነግርዎታለን።'}},
+ {en:{q:'Do you offer on-site service in Assosa?',a:'Yes — for copiers, printers, projectors and small office networks we travel to your office within Assosa town. Call 0935 144 808 to arrange a visit.'},am:{q:'በአሶሳ ወደ ቦታዬ አገልግሎት ይሰጣሉ?',a:'አዎ — ለቅጂ ማሽኖች፣ ማተሚያዎች፣ ፕሮጀክተሮችና ትንንሽ የቢሮ ኔትወርኮች በአሶሳ ከተማ ውስጥ ወደ ቢሮዎ እንመጣለን። ለማመቻቸት 0935 144 808 ይደውሉ።'}},
+ {en:{q:'Is there a warranty on repairs?',a:'Every completed repair carries a 90-day service warranty. If the same fault returns within that period, we fix it again at no cost.'},am:{q:'በጥገናው ላይ ዋስትና አለ?',a:'እያንዳንዱ የተጠናቀቀ ጥገና የ90 ቀን የአገልግሎት ዋስትና አለው። ተመሳሳይ ችግር በዚያ ጊዜ ውስጥ ከተመለሰ በነፃ እንደገና እንስተካክለዋለን።'}},
+ {en:{q:'How can I pay?',a:'Cash and Telebirr are accepted. For business clients, agreed terms are possible on larger jobs. You always receive a receipt.'},am:{q:'እንዴት መክፈል እችላለሁ?',a:'ጥሬ ገንዘብ እና በቴሌብር ይቀበላል። ለንግድ ደንበኞች ትልቅ ሥራዎች ላይ የተስማሙበት ሁኔታ ሊሆን ይችላል። ሁልጊዜ ደረሰኝ ያገኛሉ።'}}
+];
+
+/* ================= STATE & I18N ================= */
+let lang = 'en';
+try{ lang = localStorage.getItem('site_lang') || 'en'; }catch(e){}
+let currentFilter = 'all';
+let ticketText = '';
+
+function renderServices(){
+  const already = !!document.body.dataset.i18nReady;
+  const L = I18N[lang];
+  document.getElementById('servicesGrid').innerHTML = SERVICES.map(s=>{
+    const d = s[lang] || s.en;
+    return `<div class="card surface border bd rounded-2xl p-6 flex flex-col reveal ${already?'in':''}">
+      <div class="icon-tile mb-5">${SERVICE_ICONS[s.icon]}</div>
+      <h3 class="font-display font-bold text-[17px] t-hd mb-2">${d.t}</h3>
+      <p class="text-[13.5px] leading-relaxed t-tx mb-6 flex-1">${d.d}</p>
+      <button onclick="prefillBooking('${s.pre}')" class="card-link">${L['srv-book']} ${ARROW}</button>
+    </div>`;
+  }).join('');
+}
+
+function renderDevices(){
+  const already = !!document.body.dataset.i18nReady;
+  const L = I18N[lang];
+  document.getElementById('deviceGrid').innerHTML = DEVICES.map(d=>{
+    const s = d[lang] || d.en;
+    return `<article class="device-item card surface border bd rounded-2xl overflow-hidden flex flex-col reveal reveal-scale ${already?'in':''}" data-type="${d.type}">
+      <div class="relative overflow-hidden">
+        <img src="${d.img}" onerror="handleImgError(this)" alt="${s.t}" width="600" height="400" loading="lazy" decoding="async" class="w-full h-44 object-cover zoom">
+        <span class="tag-chip">${s.tag}</span>
+      </div>
+      <div class="p-5 flex flex-col flex-1">
+        <h3 class="font-display font-bold text-[15px] t-hd mb-1">${s.t}</h3>
+        <p class="text-[11px] font-bold uppercase tracking-wider t-acc mb-3">${s.b}</p>
+        <p class="text-[13px] leading-relaxed t-tx mb-5 flex-1">${s.d}</p>
+        <button onclick="prefillBooking('${d.pre}')" class="btn btn-secondary w-full py-2.5 text-xs">${L['dev-book']}</button>
+      </div>
+    </article>`;
+  }).join('');
+  applyFilter();
+}
+
+function renderSteps(){
+  const already = !!document.body.dataset.i18nReady;
+  document.getElementById('stepsGrid').innerHTML = STEPS.map((s,i)=>{
+    const d = s[lang] || s.en;
+    return `<div class="reveal ${already?'in':''} border-t-2 bd pt-6" style="border-top:2px dashed var(--bd-2)">
+      <div class="ghost-num">${String(i+1).padStart(2,'0')}</div>
+      <h3 class="mt-3 font-display font-bold text-[17px] t-hd">${d.t}</h3>
+      <p class="mt-2 text-[13.5px] leading-relaxed t-tx">${d.d}</p>
+    </div>`;
+  }).join('');
+}
+
+function renderTestimonials(){
+  const already = !!document.body.dataset.i18nReady;
+  document.getElementById('tstGrid').innerHTML = TESTIMONIALS.map(t=>{
+    const d = t[lang] || t.en;
+    return `<figure class="card surface border bd rounded-2xl p-6 flex flex-col reveal ${already?'in':''}">
+      <div class="flex gap-1 t-acc">${STAR.repeat(5)}</div>
+      <blockquote class="mt-4 text-[14.5px] leading-relaxed t-tx flex-1">“${d.q}”</blockquote>
+      <figcaption class="mt-6 flex items-center gap-3">
+        <span class="avatar">${d.n.charAt(0)}</span>
+        <div><div class="font-bold text-sm t-hd">${d.n}</div><div class="text-xs t-mut">${d.r}</div></div>
+      </figcaption>
+    </figure>`;
+  }).join('');
+}
+
+function renderFaq(){
+  const already = !!document.body.dataset.i18nReady;
+  document.getElementById('faqList').innerHTML = FAQS.map(f=>{
+    const d = f[lang] || f.en;
+    return `<div class="faq-item ${already?'reveal in':'reveal'}" aria-expanded="false">
+      <button class="faq-q w-full flex items-center justify-between gap-4 py-5 text-left">
+        <span class="font-semibold text-[15px] t-hd">${d.q}</span>
+        <span class="faq-icon shrink-0 w-8 h-8 rounded-full border bd-2 grid place-items-center t-acc"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+      </button>
+      <div class="faq-body"><p class="pb-5 pr-8 text-sm leading-relaxed t-tx">${d.a}</p></div>
+    </div>`;
+  }).join('');
+  if(already) initReveal();
+}
+
+let revealIO;
+function initReveal(){
+  if(revealIO) revealIO.disconnect();
+  revealIO = new IntersectionObserver(es=>{
+    es.forEach(en=>{ en.target.classList.toggle('in', en.isIntersecting); });
+  },{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>revealIO.observe(el));
+}
+
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v = (I18N[lang] && I18N[lang][el.dataset.i18n]) != null ? I18N[lang][el.dataset.i18n] : I18N.en[el.dataset.i18n];
+    if(v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k = el.dataset.i18nPh;
+    const v = (I18N[lang] && I18N[lang][k]) != null ? I18N[lang][k] : I18N.en[k];
+    if(v != null) el.placeholder = v;
+  });
+  document.documentElement.lang = lang === 'am' ? 'am' : 'en';
+  document.querySelectorAll('[data-lang-label]').forEach(s=> s.textContent = lang==='en' ? 'አማርኛ' : 'EN');
+  renderServices(); renderDevices(); renderSteps(); renderTestimonials(); renderFaq();
+  initReveal();
+}
+
+function toggleLanguage(){
+  lang = lang === 'en' ? 'am' : 'en';
+  try{ localStorage.setItem('site_lang', lang); }catch(e){}
+  applyLang();
+}
+
+function toggleTheme(){
+  const dark = document.documentElement.classList.toggle('dark');
+  try{ localStorage.setItem('site_theme', dark?'dark':'light'); }catch(e){}
+}
+
+/* ================= UI BEHAVIOR ================= */
+function toast(msg){
+  const w = document.getElementById('toastWrap');
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  w.appendChild(t);
+  setTimeout(()=>t.remove(), 3000);
+}
+
+function scrollToBooking(){ 
+  const el = document.getElementById('booking');
+  el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}
+
+function prefillBooking(cat){
+  const map = {printer:'printer',copier:'copier',laptop:'computer',desktop:'computer',projector:'projups',ups:'projups',software:'software',network:'network',computer:'computer',projups:'projups'};
+  const r = document.querySelector('input[name="deviceCategory"][value="'+(map[cat]||'printer')+'"]');
+  if(r) r.checked = true;
+  scrollToBooking();
+  toast(I18N[lang]['toast-prefilled']);
+  setTimeout(()=>{ const p = document.getElementById('bkProblem'); if(p) p.focus({preventScroll:true}); }, 800);
+}
+
+function filterDevices(type, btn){
+  currentFilter = type;
+  document.querySelectorAll('#filterRow .chip').forEach(c=>{ c.classList.remove('chip-active'); c.setAttribute('aria-selected','false'); });
+  btn.classList.add('chip-active'); btn.setAttribute('aria-selected','true');
+  applyFilter();
+}
+function applyFilter(){
+  let vis = 0;
+  document.querySelectorAll('#deviceGrid .device-item').forEach(it=>{
+    const show = currentFilter==='all' || it.dataset.type===currentFilter;
+    it.style.display = show ? '' : 'none';
+    if(show) vis++;
+  });
+  document.getElementById('noDevices').classList.toggle('hidden', vis>0);
+}
+
+function handleImgError(img){
+  img.onerror = null;
+  img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1006"/><stop offset="1" stop-color="#3b230c"/></linearGradient></defs><rect width="600" height="400" fill="url(#g)"/><text x="300" y="205" font-family="sans-serif" font-size="24" font-weight="700" fill="#f59e0b" text-anchor="middle">Abel Tech</text></svg>');
+}
+
+/* Mobile menu */
+function openMenu(){
+  const m = document.getElementById('mobileMenu');
+  m.classList.remove('hidden');
+  requestAnimationFrame(()=>m.classList.add('show'));
+  document.body.style.overflow = 'hidden';
+  document.getElementById('menuToggle').setAttribute('aria-expanded','true');
+}
+function closeMenu(){
+  const m = document.getElementById('mobileMenu');
+  if(m.classList.contains('hidden')) return;
+  m.classList.remove('show');
+  document.body.style.overflow = '';
+  document.getElementById('menuToggle').setAttribute('aria-expanded','false');
+  setTimeout(()=>m.classList.add('hidden'), 320);
+}
+
+/* FAQ accordion (delegation) */
+document.getElementById('faqList').addEventListener('click', e=>{
+  const btn = e.target.closest('.faq-q'); if(!btn) return;
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.getAttribute('aria-expanded')==='true';
+  document.querySelectorAll('#faqList .faq-item').forEach(i=>i.setAttribute('aria-expanded','false'));
+  item.setAttribute('aria-expanded', wasOpen ? 'false' : 'true');
+});
+
+/* Booking submit */
+function handleBookingSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('bkName');
+  const phone = document.getElementById('bkPhone');
+  const model = document.getElementById('bkModel');
+  const prob = document.getElementById('bkProblem');
+  [name, phone, prob].forEach(i=>i.classList.remove('invalid'));
+  if(!name.value.trim() || !phone.value.trim() || !prob.value.trim()){
+    if(!name.value.trim()) name.classList.add('invalid');
+    if(!phone.value.trim()) phone.classList.add('invalid');
+    if(!prob.value.trim()) prob.classList.add('invalid');
+    toast(I18N[lang]['toast-error']);
+    (!name.value.trim() ? name : !phone.value.trim() ? phone : prob).focus();
+    return;
+  }
+  if(!/^[0-9+\-\s()]{9,16}$/.test(phone.value.trim())){
+    phone.classList.add('invalid');
+    toast(I18N[lang]['toast-invalid-phone']);
+    phone.focus();
+    return;
+  }
+  const btn = document.getElementById('bkSubmit');
+  const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = I18N[lang]['book-loading']; btn.style.opacity = '.7';
+  setTimeout(()=>{
+    buildTicket(name.value.trim(), phone.value.trim(), model.value.trim(), prob.value.trim());
+    btn.disabled = false; btn.innerHTML = orig; btn.style.opacity = '';
+    document.getElementById('repairBookingForm').reset();
+    openTicketModal();
+  }, 700);
+}
+
+function buildTicket(name, phone, model, prob){
+  const L = I18N[lang];
+  const cat = document.querySelector('input[name="deviceCategory"]:checked').value;
+  const urg = document.querySelector('input[name="urgency"]:checked').value;
+  const id = 'AT-' + Math.random().toString(36).slice(2,6).toUpperCase();
+  ticketText = L['tk-head'] + ' ' + id + '\n─────────────\n'
+    + L['tk-device'] + ': ' + (L['opt-'+cat] || cat) + '\n'
+    + L['tk-model'] + ': ' + (model || L['tk-none']) + '\n'
+    + L['tk-urgency'] + ': ' + (L['urg-'+urg] || urg) + '\n'
+    + L['tk-name'] + ': ' + name + '\n'
+    + L['tk-phone'] + ': ' + phone + '\n'
+    + L['tk-problem'] + ': ' + prob;
+  document.getElementById('ticketCode').textContent = id;
+  document.getElementById('ticketSummary').textContent = ticketText;
+  document.getElementById('telegramLink').href = 'https://t.me/Lifeofabel251?text=' + encodeURIComponent(ticketText);
+  document.getElementById('waLink').href = 'https://wa.me/251935144808?text=' + encodeURIComponent(ticketText);
+}
+
+function openTicketModal(){
+  const m = document.getElementById('ticketModal');
+  m.classList.remove('hidden');
+  requestAnimationFrame(()=>m.classList.add('show'));
+  document.body.style.overflow = 'hidden';
+}
+function closeTicketModal(){
+  const m = document.getElementById('ticketModal');
+  m.classList.remove('show');
+  document.body.style.overflow = '';
+  setTimeout(()=>m.classList.add('hidden'), 280);
+}
+
+function copyTicket(){
+  const done = ()=>toast(I18N[lang]['toast-copied']);
+  const fallback = ()=>{
+    const ta = document.createElement('textarea');
+    ta.value = ticketText; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(err){}
+    ta.remove();
+  };
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(ticketText).then(done).catch(fallback);
+  } else fallback();
+}
+
+/* Scroll effects */
+const navbar = document.getElementById('navbar');
+const progressBar = document.getElementById('scrollProgress');
+const toTop = document.getElementById('toTop');
+function onScroll(){
+  const y = window.scrollY || document.documentElement.scrollTop;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (h > 0 ? (y/h*100) : 0) + '%';
+  navbar.classList.toggle('nav-scrolled', y > 12);
+  toTop.classList.toggle('show', y > 640);
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
+/* Escape closes overlays */
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){ closeMenu(); closeTicketModal(); }
+});
+
+/* Animated counters */
+function initCounters(){
+  const fmt = n => n.toLocaleString('en-US');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting) return;
+      const el = en.target; io.unobserve(el);
+      const target = +el.dataset.count;
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = fmt(target); return; }
+      const dur = 1400, t0 = performance.now();
+      (function tick(now){
+        const p = Math.min((now - t0)/dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(Math.round(target * eased));
+        if(p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
+}
+
+/* Init */
+applyLang();
+initCounters();
+onScroll();
+document.body.dataset.i18nReady = '1';
+</script>
+</body>
+</html>

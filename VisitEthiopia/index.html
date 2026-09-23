@@ -5,12 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visit Ethiopia 🇪🇹 — Land of Origins</title>
 <meta name="description" content="Explore Ethiopia region by region: historical sites, national parks, lakes, volcanoes, festivals, coffee & cuisine.">
+<meta name="theme-color" content="#078930">
+<link rel="preload" as="image" href="img/lalibela-rock-hewn-churches.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("et-theme") || "light");</script>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar"></div>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <header class="navbar" id="navbar">
@@ -51,10 +55,10 @@
       <a href="#explore" class="btn btn-ghost" id="heroBrowse" data-i18n="heroBrowse">Browse Attractions</a>
     </div>
     <div class="hero-stats">
-      <div><strong>12</strong><span data-i18n="statsRegions">Regions</span></div>
-      <div><strong>40+</strong><span data-i18n="statsAttractions">Attractions</span></div>
-      <div><strong>10</strong><span data-i18n="statsUNESCO">UNESCO Sites</span></div>
-      <div><strong>860+</strong><span data-i18n="statsBirds">Bird Species</span></div>
+      <div><strong data-count="12">12</strong><span data-i18n="statsRegions">Regions</span></div>
+      <div><strong data-count="40" data-suffix="+">40+</strong><span data-i18n="statsAttractions">Attractions</span></div>
+      <div><strong data-count="10">10</strong><span data-i18n="statsUNESCO">UNESCO Sites</span></div>
+      <div><strong data-count="860" data-suffix="+">860+</strong><span data-i18n="statsBirds">Bird Species</span></div>
     </div>
   </div>
   <div class="flag-stripe"></div>
@@ -150,10 +154,10 @@
   <div class="flag-bar"></div>
   <p class="sec-sub reveal">Ethiopia is a biodiversity hotspot — endemic species found nowhere else on Earth.</p>
   <div class="wild-stats reveal">
-    <div><strong>13</strong><span>Featured mammals</span></div>
-    <div><strong>5</strong><span>Endemic mammals</span></div>
-    <div><strong>860+</strong><span>Bird species</span></div>
-    <div><strong>31</strong><span>Endemic birds</span></div>
+    <div><strong data-count="13">13</strong><span>Featured mammals</span></div>
+    <div><strong data-count="5">5</strong><span>Endemic mammals</span></div>
+    <div><strong data-count="860" data-suffix="+">860+</strong><span>Bird species</span></div>
+    <div><strong data-count="31">31</strong><span>Endemic birds</span></div>
   </div>
   <div class="wild-blocks">
     <div class="panel reveal">
